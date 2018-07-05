@@ -1,13 +1,13 @@
 <?php
-defined('YII_DEBUG') or define('YII_DEBUG', false);
-defined('YII_ENV') or define('YII_ENV', 'prod');
-defined('YII_ENV_DEV') or define('YII_ENV_DEV', false);
+defined('YII_DEBUG') or define('YII_DEBUG', true);
+defined('YII_ENV') or define('YII_ENV', 'test');
+defined('YII_ENV_DEV') or define('YII_ENV_DEV', true);
 
 return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=127.0.0.1;dbname=old_base',
+            'dsn' => 'mysql:host=127.0.0.1;dbname=test_old_base',
             'username' => 'root',
             'password' => '3659900',
             'charset' => 'utf8',
