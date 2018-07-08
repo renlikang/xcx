@@ -11,6 +11,7 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'api\controllers',
+    'defaultRoute' => 'index/index',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
@@ -22,10 +23,10 @@ return [
         ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
-            'name' => 'advanced-frontend',
+            'name' => 'advanced-api',
         ],
         'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'traceLevel' => 3,
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
@@ -33,17 +34,15 @@ return [
                 ],
             ],
         ],
-        'errorHandler' => [
-            'errorAction' => 'site/error',
-        ],
-        /*
+//        'errorHandler' => [
+//            'errorAction' => 'site/error',
+//        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
