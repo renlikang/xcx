@@ -12,9 +12,14 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'api\controllers',
     'defaultRoute' => 'index/index',
+    'modules' => [
+        'apidoc' => [
+            'class' => 'daodao97\apidoc\Module',
+        ],
+    ],
     'components' => [
         'request' => [
-            'csrfParam' => '_csrf-frontend',
+            'csrfParam' => '_csrf-api',
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -25,15 +30,15 @@ return [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-api',
         ],
-        'log' => [
-            'traceLevel' => 3,
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                ],
-            ],
-        ],
+//        'log' => [
+//            'traceLevel' => 3,
+//            'targets' => [
+//                [
+//                    'class' => 'yii\log\FileTarget',
+//                    'levels' => ['error', 'warning'],
+//                ],
+//            ],
+//        ],
 //        'errorHandler' => [
 //            'errorAction' => 'site/error',
 //        ],

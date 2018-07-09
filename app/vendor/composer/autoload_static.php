@@ -8,12 +8,13 @@ class ComposerStaticInit74f4e8e0a2254330a0563b868f1a941b
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '180092cfc969a12e06f2132a203a3184' => __DIR__ . '/..' . '/codeception/verify/src/Codeception/function.php',
+        '0ccdf99b8f62f02c52cba55802e0c2e7' => __DIR__ . '/..' . '/zircote/swagger-php/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -30,6 +31,14 @@ class ComposerStaticInit74f4e8e0a2254330a0563b868f1a941b
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
+        ),
+        'l' => 
+        array (
+            'linslin\\yii2\\curl\\' => 18,
+        ),
+        'd' => 
+        array (
+            'daodao97\\apidoc\\' => 16,
         ),
         'c' => 
         array (
@@ -50,6 +59,7 @@ class ComposerStaticInit74f4e8e0a2254330a0563b868f1a941b
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\BrowserKit\\' => 29,
+            'Swagger\\' => 8,
         ),
         'P' => 
         array (
@@ -70,6 +80,7 @@ class ComposerStaticInit74f4e8e0a2254330a0563b868f1a941b
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
+            'Doctrine\\Common\\Annotations\\' => 28,
             'DeepCopy\\' => 9,
         ),
         'C' => 
@@ -115,6 +126,14 @@ class ComposerStaticInit74f4e8e0a2254330a0563b868f1a941b
             1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
+        'linslin\\yii2\\curl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/linslin/yii2-curl',
+        ),
+        'daodao97\\apidoc\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/daodao97/apidoc',
+        ),
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
@@ -159,6 +178,10 @@ class ComposerStaticInit74f4e8e0a2254330a0563b868f1a941b
         array (
             0 => __DIR__ . '/..' . '/symfony/browser-kit',
         ),
+        'Swagger\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zircote/swagger-php/src',
+        ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
@@ -178,6 +201,10 @@ class ComposerStaticInit74f4e8e0a2254330a0563b868f1a941b
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
+        ),
+        'Doctrine\\Common\\Annotations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
         ),
         'DeepCopy\\' => 
         array (
