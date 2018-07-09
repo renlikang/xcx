@@ -7,9 +7,9 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=127.0.0.1;dbname=test_old_base',
+            'dsn' => 'mysql:host=mysql;dbname=old_base',
             'username' => 'root',
-            'password' => '3659900',
+            'password' => 'root',
             'charset' => 'utf8',
             'driverName' => 'mysql',
         ],
@@ -20,6 +20,13 @@ return [
             'password' => '',
             'port' => '6379',
             'database' => 1,
+            'socketClientFlags' => STREAM_CLIENT_CONNECT
+        ],
+        'login_redis' => [
+            'class' => 'common\components\Redis',
+            'hostname' => '127.0.0.1',
+            'port' => '6379',
+            'database' => 2,
             'socketClientFlags' => STREAM_CLIENT_CONNECT
         ],
 
