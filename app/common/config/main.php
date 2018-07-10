@@ -60,5 +60,12 @@ return [
             'grant_type' => 'authorization_code',
             'templateId' => '',
         ],
+
+        'oss' => [
+            'class' => 'common\components\OSS',
+            'accessKey' => 'tjLiYtJyZ8d7L4DKO9koNNt3iiPVbCKcbcK2u-Jn',
+            'secretKey' => 'urTJwiTY6MYgnUoez1Zc2j5V8oiP4g_VGILnHOqk',
+            'bucket' => 'old-xcx',
+        ],
     ],
 ];

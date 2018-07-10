@@ -14,6 +14,7 @@ class IndexController extends Controller
     {
         return [
             'index' => 'api\actions\index\Index',
+            'upload' => 'api\actions\index\Upload',
         ];
     }
 

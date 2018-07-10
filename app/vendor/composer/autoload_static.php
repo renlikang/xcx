@@ -15,6 +15,7 @@ class ComposerStaticInit74f4e8e0a2254330a0563b868f1a941b
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '180092cfc969a12e06f2132a203a3184' => __DIR__ . '/..' . '/codeception/verify/src/Codeception/function.php',
         '0ccdf99b8f62f02c52cba55802e0c2e7' => __DIR__ . '/..' . '/zircote/swagger-php/src/functions.php',
+        '841780ea2e1d6545ea3a253239d59c05' => __DIR__ . '/..' . '/qiniu/php-sdk/src/Qiniu/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -61,6 +62,10 @@ class ComposerStaticInit74f4e8e0a2254330a0563b868f1a941b
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\BrowserKit\\' => 29,
             'Swagger\\' => 8,
+        ),
+        'Q' => 
+        array (
+            'Qiniu\\' => 6,
         ),
         'P' => 
         array (
@@ -186,6 +191,10 @@ class ComposerStaticInit74f4e8e0a2254330a0563b868f1a941b
         'Swagger\\' => 
         array (
             0 => __DIR__ . '/..' . '/zircote/swagger-php/src',
+        ),
+        'Qiniu\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/qiniu/php-sdk/src/Qiniu',
         ),
         'Psr\\Http\\Message\\' => 
         array (
