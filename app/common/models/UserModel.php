@@ -17,7 +17,6 @@ use yii\web\IdentityInterface;
  * @property string $openId openId
  * @property string $unionid unionid
  * @property string $cTime
- * @property string $uTime
  * @property int $deleteFlag :01
  */
 class UserModel extends \yii\db\ActiveRecord implements IdentityInterface
@@ -37,7 +36,7 @@ class UserModel extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['appType', 'deleteFlag'], 'integer'],
-            [['cTime', 'uTime'], 'safe'],
+            [['cTime'], 'safe'],
             [['appKey'], 'string', 'max' => 64],
             [['nickName'], 'string', 'max' => 255],
             [['imgUrl'], 'string', 'max' => 1000],
@@ -56,7 +55,6 @@ class UserModel extends \yii\db\ActiveRecord implements IdentityInterface
             'nickName' => 'Nick Name',
             'imgUrl' => 'Img Url',
             'cTime' => 'C Time',
-            'uTime' => 'U Time',
             'deleteFlag' => 'Delete Flag',
         ];
     }
