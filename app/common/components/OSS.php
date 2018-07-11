@@ -5,10 +5,12 @@
 
 namespace common\components;
 
+use linslin\yii2\curl\Curl;
 use Qiniu\Auth;
 use Qiniu\Storage\UploadManager;
 use yii\base\Component;
 use Yii;
+use yii\helpers\Json;
 
 class OSS extends Component
 {
@@ -46,5 +48,21 @@ class OSS extends Component
         return $ret;
     }
 
+    public function uploadUrlImage($url)
+    {
+        $fileInfo = pathinfo($url);
+        $curl = new Curl;
+        $curl->get($url);
+        $token = $this->getUpToken();
+        $uploadManager=new UploadManager();
+        $name = YII_ENV.'/'.date('Ymd').'/'.$fileInfo['filename'] . '_' . md5(time() . microtime()) . '.' . $fileInfo['extension'];
+        $type = $fileInfo['extension'];
+        list($ret,$err) = $uploadManager->put($token, $name, $curl->response, null, $type, false);
+        if($err) {
+            Yii::error($err, __CLASS__.'::'.__FUNCTION__);
+            return false;
+        }
 
+        return $ret;
+    }
 }
