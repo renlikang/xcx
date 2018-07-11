@@ -13,9 +13,9 @@ class Login extends BaseAction
 {
     /**
      * @SWG\Post(
-     *     path="/login/wx-applets",
-     *     tags={"微信小程序"},
-     *     summary="微信小程序登录接口",
+     *     path="/login/wx",
+     *     tags={"登录功能"},
+     *     summary="登录接口",
      *     description="",
      *     produces={"application/json"},
      *     @SWG\Parameter(in = "formData",name = "appKey",description = "应用标识(我们可以自定义名称)",required = true,type = "string"),
