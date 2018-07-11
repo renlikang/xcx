@@ -19,3 +19,15 @@ CREATE TABLE user(
  `deleteFlag` tinyint(1) not null DEFAULT 0 COMMENT '删除标识:0正常，1删除',
  PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '版本控制表';
+
+CREATE TABLE user_record(
+ `recordId` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+ `uid` int(11) NOT NULL COMMENT '用户编号',
+ `title` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '题目',
+ `memo` TEXT COMMENT '描述',
+ `address` TEXT COMMENT '' COMMENT '地址',
+ `imgUrl` VARCHAR(1000) NOT NULL DEFAULT '' COMMENT '用户照片',
+ `cTime` TIMESTAMP not null  DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+ `deleteFlag` tinyint(1) not null DEFAULT 0 COMMENT '删除标识:0正常，1删除',
+ PRIMARY KEY (`recordId`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '用户回忆录表';
