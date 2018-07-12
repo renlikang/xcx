@@ -12,7 +12,7 @@ class MyController extends Controller
     public function actions()
     {
         return [
-            'img' => 'api\actions\My\Img',
+            'img' => 'api\actions\my\Img',
         ];
     }
 }
