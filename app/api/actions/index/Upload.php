@@ -27,7 +27,6 @@ class Upload extends BaseAction
      */
     public function run()
     {
-        var_dump(Yii::$app->params['staticUrl']);exit;
         /** @var OSS $oss */
         $oss = Yii::$app->oss;
         $file = $oss->upload();
