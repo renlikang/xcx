@@ -16,6 +16,7 @@ class IndexController extends Controller
             'index' => 'api\actions\index\Index',
             'upload' => 'api\actions\index\Upload',
             'upload-url' => 'api\actions\index\UploadUrl',
+            'upload-token' => 'api\actions\index\UploadToken',
         ];
     }
 
