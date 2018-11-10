@@ -12,7 +12,7 @@ class LoginController extends Controller
     public function actions()
     {
         return [
-            'login' => 'backend\actions\login\Login',
+            'index' => 'backend\actions\login\Login',
         ];
     }
 }
