@@ -18,7 +18,7 @@ class Login extends BaseAction
      *     path="/login/index",
      *     tags={"基础功能"},
      *     summary="登录接口",
-     *     description="备用 operation 3beef887",
+     *     description="",
      *     produces={"application/json"},
      *     @SWG\Parameter(in = "formData",name = "username",description = "登录名",required = true,default="admin", type = "string"),
      *     @SWG\Parameter(in = "formData",name = "password",description = "密码",required = true, default="9b256e2f", type = "string"),
