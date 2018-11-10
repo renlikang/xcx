@@ -3,7 +3,7 @@
  * @author rlk
  */
 
-namespace api\actions\login;
+namespace backend\actions\login;
 
 use api\actions\BaseAction;
 use Yii;

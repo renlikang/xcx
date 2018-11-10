@@ -14,6 +14,22 @@ return [
             'driverName' => 'mysql',
         ],
 
+        'db_admin' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=127.0.0.1;port=3308;dbname=woof_admin',
+            'username' => 'root',
+            'password' => 'root',
+            'charset' => 'utf8mb4',
+        ],
+
+        'db_content' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=127.0.0.1;port=3308;dbname=woof_content',
+            'username' => 'root',
+            'password' => 'root',
+            'charset' => 'utf8mb4',
+        ],
+
         'redis' => [
             'class' => 'common\components\Redis',
             'hostname' => '127.0.0.1',
