@@ -11,22 +11,50 @@ use yii\base\Exception;
 
 class Login extends BaseAction
 {
+    /**
+     * @SWG\Post(
+     *     path="/login/index",
+     *     tags={"基础功能"},
+     *     summary="登录接口",
+     *     description="备用 operation 3beef887",
+     *     produces={"application/json"},
+     *     @SWG\Parameter(in = "formData",name = "username",description = "登录名",required = true,default="admin", type = "string"),
+     *     @SWG\Parameter(in = "formData",name = "password",description = "密码",required = true, default="64124780", type = "string"),
+     *     @SWG\Response(response = 200,description = " success"),
+     *     @SWG\Response(response = 100,description = " 用户名不存在"),
+     *     @SWG\Response(response = 101,description = " 用户名或者密码错误"),
+     * )
+     *
+     */
     public function run()
     {
-        try {
-            $code = Yii::$app->request->post('code');
-            $iv = Yii::$app->request->post('iv');
-            $encryptedData = Yii::$app->request->post('encryptedData');
-            $appKey = Yii::$app->request->post('appKey');
-            $appType = Yii::$app->request->post('appType');
-            $data = Yii::$app->wx->getSessionKeyAndOpenId($code);
-            $sessionKey = $data["session_key"];
-            $data = Yii::$app->wx->decryptData($iv, $sessionKey, $encryptedData);
-            $unionId = $data['unionid']??'';
-            $data = (new \api\service\Login)->login($appKey, $appType, $data['openId'], $data['avatarUrl'], $data['nickName'], $sessionKey, $unionId);
-            return ['code' => 200, 'message' => "success", 'data' => ['user' => $data['user']]];
-        } catch (Exception $e) {
-            return ['code' => $e->getCode(), 'message' => $e->getMessage()];
+        if(Yii::$app->user->isGuest == false) {
+            Yii::$app->user->logout();
         }
+
+        $username = Yii::$app->request->post('username');
+        $password = Yii::$app->request->post('password');
+        $user = AdminModel::findByUsername($username);
+        if(!$user) {
+            return [
+                'code' => 100,
+                'message' => '用户名不存在',
+            ];
+        }
+
+        if($user->validatePassword($password)) {
+            Yii::$app->user->login($user);
+            Yii::info("login ", __CLASS__ . '::' . __FUNCTION__);
+            $data = [
+                'aid' => $user->aid,
+                'username' => $user->username,
+            ];
+            return RetCode::response(RetCode::SUCCESS, $data);
+        }
+
+        return [
+            'code' => 101,
+            'message' => '用户名或者密码错误',
+        ];
     }
 }

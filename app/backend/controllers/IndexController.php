@@ -19,5 +19,4 @@ class IndexController extends Controller
             'upload-token' => 'api\actions\index\UploadToken',
         ];
     }
-
 }

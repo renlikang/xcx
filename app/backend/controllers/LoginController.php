@@ -12,7 +12,7 @@ class LoginController extends Controller
     public function actions()
     {
         return [
-            'wx' => 'api\actions\login\Login',
+            'login' => 'backend\actions\login\Login',
         ];
     }
 }
