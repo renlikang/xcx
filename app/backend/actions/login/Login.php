@@ -19,7 +19,7 @@ class Login extends BaseAction
      *     description="备用 operation 3beef887",
      *     produces={"application/json"},
      *     @SWG\Parameter(in = "formData",name = "username",description = "登录名",required = true,default="admin", type = "string"),
-     *     @SWG\Parameter(in = "formData",name = "password",description = "密码",required = true, default="64124780", type = "string"),
+     *     @SWG\Parameter(in = "formData",name = "password",description = "密码",required = true, default="9b256e2f", type = "string"),
      *     @SWG\Response(response = 200,description = " success"),
      *     @SWG\Response(response = 100,description = " 用户名不存在"),
      *     @SWG\Response(response = 101,description = " 用户名或者密码错误"),

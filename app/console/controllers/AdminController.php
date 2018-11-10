@@ -6,8 +6,6 @@ namespace console\controllers;
 
 use common\components\Helper;
 use common\models\admin\AdminModel;
-use common\models\content\ArticleModel;
-use common\services\backend\RoleService;
 use yii\console\Controller;
 use yii\helpers\Json;
 
@@ -22,6 +20,7 @@ class AdminController extends Controller
         $model->status = AdminModel::STATUS_ACTIVE;
         if($model->save()) {
             echo $password;
+            exit;
         }
 
         var_dump($model->errors);
