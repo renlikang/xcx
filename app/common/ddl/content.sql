@@ -11,8 +11,7 @@ CREATE TABLE `article` (
   `subTitle` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '副标题',
   `summary` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '内容摘要',
   `headImg` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '头图',
-  `coverType` set('image','video') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'image' COMMENT '封面类型',
-  `covers` json DEFAULT NULL COMMENT '封面图片',
+  `content` json DEFAULT NULL COMMENT '内容',
   `orderId` int(11) NOT NULL DEFAULT '0' COMMENT '权重',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态 1:启用 0:禁用',
   `cTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
@@ -21,33 +20,7 @@ CREATE TABLE `article` (
   `isFeatured` tinyint(1) NOT NULL DEFAULT '0' COMMENT '编辑精选',
   PRIMARY KEY (`articleId`),
   KEY `authorId` (`authorId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3598 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='文章表'
-
-CREATE TABLE paragraph (
-  paragraphId int(11) NOT NULL AUTO_INCREMENT COMMENT '段落ID',
-  articleId int(11) NOT NULL COMMENT '内容ID',
-  orderId int(11) NOT NULL DEFAULT 0 COMMENT '段落顺序',
-  cTime TIMESTAMP not null  DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
-  uTime TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  deleteFlag tinyint(1) not null DEFAULT 0 COMMENT '删除标识:0正常，1删除',
-  PRIMARY KEY (paragraphId),
-  INDEX articleId(articleId)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '文章段落表';
-
-CREATE TABLE paragraph_content(
-  contentId int(11) NOT NULL AUTO_INCREMENT COMMENT '内容ID',
-  articleId int(11) NOT NULL  COMMENT '文章ID',
-  paragraphId int(11) NOT NULL  COMMENT '段落ID',
-  `type` VARCHAR(128) NOT NULL DEFAULT 'text' COMMENT '内容类型',
-  `content` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '内容',
-  orderId int(11) NOT NULL DEFAULT 0 COMMENT '内容顺序',
-  cTime TIMESTAMP not null  DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
-  uTime TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  deleteFlag tinyint(1) not null DEFAULT 0 COMMENT '删除标识:0正常，1删除',
-  PRIMARY KEY (contentId),
-  INDEX articleId(articleId),
-  INDEX paragraphId(paragraphId)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT '文章段落内容表';
+) ENGINE=InnoDB AUTO_INCREMENT=3598 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='文章表';
 
 
 CREATE TABLE article_static (
