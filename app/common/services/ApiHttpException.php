@@ -6,7 +6,7 @@
  * Time: 10:28 AM
  */
 
-namespace common\service;
+namespace common\services;
 
 
 use common\services\RetCode;

@@ -9,7 +9,7 @@
 namespace backend\actions\article;
 
 use backend\actions\BaseAction;
-use common\service\ArticleService;
+use common\services\ArticleService;
 use common\services\RetCode;
 use Yii;
 

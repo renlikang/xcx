@@ -6,7 +6,7 @@
  * Time: 11:58 PM
  */
 
-namespace common\service;
+namespace common\services;
 
 use common\models\content\ArticleModel;
 use common\services\RetCode;

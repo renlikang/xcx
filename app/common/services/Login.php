@@ -3,7 +3,7 @@
  * @author rlk
  */
 
-namespace common\service;
+namespace common\services;
 
 
 
