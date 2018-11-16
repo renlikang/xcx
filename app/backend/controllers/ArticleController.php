@@ -27,7 +27,6 @@ use yii\rest\Controller;
  *     @SWG\Parameter(in = "formData",name = "content",description = "文章内容",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "orderId",description = "权重",required = true, type = "integer"),
  *     @SWG\Response(response = 200,description = " success"),
- *     @SWG\Response(response = 10003,description = "保存失败"),
  * )
  *
  * @SWG\Post(
@@ -47,7 +46,6 @@ use yii\rest\Controller;
  *     @SWG\Parameter(in = "formData",name = "content",description = "文章内容",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "orderId",description = "权重",required = true, type = "integer"),
  *     @SWG\Response(response = 200,description = " success"),
- *     @SWG\Response(response = 10003,description = "保存失败"),
  * )
  *
  *
@@ -61,7 +59,6 @@ use yii\rest\Controller;
  *     @SWG\Parameter(in = "query",name = "page",description = "页数",required = true, type = "integer"),
  *     @SWG\Parameter(in = "query",name = "size",description = "每页个数",required = true, type = "integer"),
  *     @SWG\Response(response = 200,description = " success"),
- *     @SWG\Response(response = 10003,description = "保存失败"),
  * )
  *
  * @SWG\Get(
@@ -73,7 +70,6 @@ use yii\rest\Controller;
  *     consumes = {"application/json"},
  *     @SWG\Parameter(in = "query",name = "articleId",description = "文章编号",required = true, type = "integer"),
  *     @SWG\Response(response = 200,description = " success"),
- *     @SWG\Response(response = 10003,description = "保存失败"),
  * )
  *
  *
