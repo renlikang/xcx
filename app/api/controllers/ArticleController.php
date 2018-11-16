@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: renlikang
- * Date: 2018/11/16
- * Time: 11:26 AM
- */
 
 namespace api\controllers;
 
