@@ -15,7 +15,6 @@ use yii\rest\Controller;
  *     @SWG\Parameter(in = "query",name = "page",description = "页数",required = true, type = "integer"),
  *     @SWG\Parameter(in = "query",name = "size",description = "每页个数",required = true, type = "integer"),
  *     @SWG\Response(response = 200,description = " success"),
- *     @SWG\Response(response = 10003,description = "保存失败"),
  * )
  *
  * @SWG\Get(
@@ -27,7 +26,6 @@ use yii\rest\Controller;
  *     consumes = {"application/json"},
  *     @SWG\Parameter(in = "query",name = "articleId",description = "文章编号",required = true, type = "integer"),
  *     @SWG\Response(response = 200,description = " success"),
- *     @SWG\Response(response = 10003,description = "保存失败"),
  * )
  *
  *
