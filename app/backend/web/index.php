@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     return true;
 } else {
     $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
-    header("Access-Control-Allow-Origin: {$origin}");
+    header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Headers: content-type, X-Requested-With");
     header("Access-Control-Allow-Credentials: true");
     header("Access-Control-Allow-Methods: PUT, POST, GET");

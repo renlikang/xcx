@@ -12,6 +12,7 @@ use backend\actions\BaseAction;
 use common\services\ArticleService;
 use common\services\RetCode;
 use Yii;
+use yii\helpers\Json;
 
 class Insert extends BaseAction
 {
@@ -27,6 +28,10 @@ class Insert extends BaseAction
         $headImg = Yii::$app->request->post('headImg');
         $content = Yii::$app->request->post('content');
         $orderId = Yii::$app->request->post('orderId');
+        if($content) {
+            $content = Json::decode($content, true);
+        }
+
         if($this->type == 'update') {
             $articleId = Yii::$app->request->post('articleId');
             (new ArticleService)->update($articleId, $authorId, $source, $title, $subTitle, $summary, $headImg, $content, $orderId);
