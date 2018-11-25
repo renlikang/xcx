@@ -20,7 +20,7 @@ CREATE TABLE `article` (
   `isFeatured` tinyint(1) NOT NULL DEFAULT '0' COMMENT '编辑精选',
   PRIMARY KEY (`articleId`),
   KEY `authorId` (`authorId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3598 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='文章表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='文章表';
 
 
 CREATE TABLE article_static (

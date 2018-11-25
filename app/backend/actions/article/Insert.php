@@ -21,7 +21,7 @@ class Insert extends BaseAction
 
     public function run()
     {
-        $authorId = Yii::$app->request->post('authorId');
+        $authorId = Yii::$app->request->post('authorId') ?? 0;
         $source = Yii::$app->request->post('source');
         $title = Yii::$app->request->post('title');
         $subTitle = Yii::$app->request->post('subTitle');
