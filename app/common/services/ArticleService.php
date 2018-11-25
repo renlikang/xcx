@@ -45,10 +45,10 @@ class ArticleService
         $model->orderId = $orderId;
         if(!$model->save()){
             Yii::error($model->errors, __CLASS__.'::'.__FUNCTION__);
-            throw  new ApiHttpException(RetCode::DB_ERROR);
+            throw new HttpException(RetCode::DB_ERROR, RetCode::$responseMsg[RetCode::DB_ERROR], RetCode::DB_ERROR);
         }
 
-        return true;
+        return ArticleModel::findOne($model->articleId);
     }
 
     /**
@@ -82,7 +82,7 @@ class ArticleService
             throw new HttpException(RetCode::DB_ERROR, RetCode::$responseMsg[RetCode::DB_ERROR], RetCode::DB_ERROR);
         }
 
-        return true;
+        return ArticleModel::findOne($articleId);
     }
 
     /**

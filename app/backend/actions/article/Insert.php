@@ -35,13 +35,13 @@ class Insert extends BaseAction
 
         if($this->type == 'update') {
             $articleId = Yii::$app->request->post('articleId');
-            (new ArticleService)->update($articleId, $authorId, $source, $title, $subTitle, $summary, $headImg, $content, $orderId);
+            $ret = (new ArticleService)->update($articleId, $authorId, $source, $title, $subTitle, $summary, $headImg, $content, $orderId);
 
         } else {
-            (new ArticleService)->create($authorId, ArticleModel::PGC, $source, $title, $subTitle, $summary, $headImg, $content, $orderId);
+            $ret = (new ArticleService)->create($authorId, ArticleModel::PGC, $source, $title, $subTitle, $summary, $headImg, $content, $orderId);
         }
 
-        return RetCode::response(RetCode::SUCCESS);
+        return RetCode::response(RetCode::SUCCESS, $ret);
 
     }
 }
