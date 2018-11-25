@@ -9,6 +9,7 @@
 namespace  backend\actions\article;
 
 use backend\actions\BaseAction;
+use common\models\content\ArticleModel;
 use common\services\ArticleService;
 use common\services\RetCode;
 use Yii;
@@ -37,7 +38,7 @@ class Insert extends BaseAction
             (new ArticleService)->update($articleId, $authorId, $source, $title, $subTitle, $summary, $headImg, $content, $orderId);
 
         } else {
-            (new ArticleService)->create($authorId, 'PGC', $source, $title, $subTitle, $summary, $headImg, $content, $orderId);
+            (new ArticleService)->create($authorId, ArticleModel::PGC, $source, $title, $subTitle, $summary, $headImg, $content, $orderId);
         }
 
         return RetCode::response(RetCode::SUCCESS);
