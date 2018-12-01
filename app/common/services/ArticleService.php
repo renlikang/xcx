@@ -94,7 +94,7 @@ class ArticleService
      */
     public function articleList($page, $size)
     {
-        $list = ArticleModel::find();
+        $list = ArticleModel::find()->where(['deleteFlag' => 0]);
         $list->orderBy('orderId desc, cTime desc');
         $modelClone = clone $list;
         $total = (int)$modelClone->count();
