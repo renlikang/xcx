@@ -19,7 +19,7 @@ class Delete extends Action
     public $modelClass = false;
     public function run()
     {
-        $articleId = Yii::$app->request->post('article');
+        $articleId = Yii::$app->request->post('articleId');
         $model = ArticleModel::findOne($articleId);
         $model->deleteFlag = 1;
         $model->save();
