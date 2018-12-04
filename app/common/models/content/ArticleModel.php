@@ -15,6 +15,7 @@ use Yii;
  * @property string $subTitle 副标题
  * @property string $summary 内容摘要
  * @property string $headImg 头图
+ * @property string $endImg 尾图
  * @property array $content 内容
  * @property int $orderId 权重
  * @property int $status 状态 1:启用 0:禁用
@@ -54,7 +55,7 @@ class ArticleModel extends \yii\db\ActiveRecord
             [['content', 'cTime', 'uTime'], 'safe'],
             [['source'], 'string', 'max' => 32],
             [['title', 'subTitle'], 'string', 'max' => 255],
-            [['headImg'], 'string', 'max' => 1024],
+            [['headImg', 'headImg'], 'string', 'max' => 1024],
         ];
     }
 
@@ -72,6 +73,7 @@ class ArticleModel extends \yii\db\ActiveRecord
             'subTitle' => 'Sub Title',
             'summary' => 'Summary',
             'headImg' => 'Head Img',
+            'endImg' => 'End Img',
             'content' => 'Content',
             'orderId' => 'Order ID',
             'status' => 'Status',

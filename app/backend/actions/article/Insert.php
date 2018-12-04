@@ -26,7 +26,8 @@ class Insert extends BaseAction
         $title = Yii::$app->request->post('title');
         $subTitle = Yii::$app->request->post('subTitle');
         $summary = Yii::$app->request->post('summary');
-        $headImg = Yii::$app->request->post('headImg');
+        $headImg = Yii::$app->request->post('headImg') ?? '';
+        $endImg = Yii::$app->request->post('endImg') ?? '';
         $content = Yii::$app->request->post('content');
         $orderId = Yii::$app->request->post('orderId');
         if($content) {
@@ -35,10 +36,10 @@ class Insert extends BaseAction
 
         if($this->type == 'update') {
             $articleId = Yii::$app->request->post('articleId');
-            $ret = (new ArticleService)->update($articleId, $authorId, $source, $title, $subTitle, $summary, $headImg, $content, $orderId);
+            $ret = (new ArticleService)->update($articleId, $authorId, $source, $title, $subTitle, $summary, $headImg, $endImg, $content, $orderId);
 
         } else {
-            $ret = (new ArticleService)->create($authorId, ArticleModel::PGC, $source, $title, $subTitle, $summary, $headImg, $content, $orderId);
+            $ret = (new ArticleService)->create($authorId, ArticleModel::PGC, $source, $title, $subTitle, $summary, $headImg, $endImg, $content, $orderId);
         }
 
         return RetCode::response(RetCode::SUCCESS, $ret);

@@ -31,7 +31,7 @@ class ArticleService
      * @return bool
      * @throws HttpException
      */
-    public function create($authorId, $type, $source, $title, $subTitle, $summary, $headImg, $content, $orderId)
+    public function create($authorId, $type, $source, $title, $subTitle, $summary, $headImg, $endImg, $content, $orderId)
     {
         $model = new ArticleModel;
         $model->authorId = $authorId;
@@ -41,6 +41,7 @@ class ArticleService
         $model->subTitle = $subTitle;
         $model->summary = $summary;
         $model->headImg = $headImg;
+        $model->endImg = $endImg;
         $model->content = $content;
         $model->orderId = $orderId;
         if(!$model->save()){
@@ -66,7 +67,7 @@ class ArticleService
      * @return bool
      * @throws HttpException
      */
-    public function update($articleId, $authorId, $source, $title, $subTitle, $summary, $headImg, $content, $orderId)
+    public function update($articleId, $authorId, $source, $title, $subTitle, $summary, $headImg, $endImg, $content, $orderId)
     {
         $model = ArticleModel::findOne($articleId);
         $model->authorId = $authorId;
@@ -75,6 +76,7 @@ class ArticleService
         $model->subTitle = $subTitle;
         $model->summary = $summary;
         $model->headImg = $headImg;
+        $model->endImg = $endImg;
         $model->content = $content;
         $model->orderId = $orderId;
         if(!$model->save()){
