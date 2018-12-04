@@ -72,6 +72,17 @@ use yii\rest\Controller;
  *     @SWG\Response(response = 200,description = " success"),
  * )
  *
+ * @SWG\Post(
+ *     path="/article/delete",
+ *     tags={"文章管理"},
+ *     summary="删除文章",
+ *     description="",
+ *     produces={"application/json"},
+ *     consumes = {"application/json"},
+ *     @SWG\Parameter(in = "formData",name = "articleId",description = "文章编号",required = true, type = "integer"),
+ *     @SWG\Response(response = 200,description = " success"),
+ * )
+ *
  *
  */
 class ArticleController extends Controller
@@ -96,6 +107,9 @@ class ArticleController extends Controller
 
             'detail' => [
                 'class' => 'backend\actions\article\Detail',
+            ],
+            'delete' => [
+               'class' =>  'backend\actions\article\Delete',
             ],
         ];
     }
