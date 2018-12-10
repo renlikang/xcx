@@ -5,7 +5,7 @@ namespace backend\event;
 use yii\base\Component;
 use yii\base\Event;
 use Yii;
-use yii\web\HttpException;
+use yii\web\ForbiddenHttpException;
 
 class Before extends Component
 {
@@ -17,9 +17,8 @@ class Before extends Component
 
     private static function checkRoute()
     {
-        var_dump(Yii::$app->getUser()->getIsGuest() );exit;
         if(Yii::$app->getUser()->getIsGuest() && Yii::$app->controller->id != 'login') {
-            throw new HttpException(403, null, 403);
+            throw new ForbiddenHttpException("必须登录用户才能访问");
         }
 
         return true;
