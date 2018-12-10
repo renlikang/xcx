@@ -17,6 +17,7 @@ class Before extends Component
 
     private static function checkRoute()
     {
+        var_dump(Yii::$app->getUser()->getIsGuest() );exit;
         if(Yii::$app->getUser()->getIsGuest() && Yii::$app->controller->id != 'login') {
             throw new HttpException(403, null, 403);
         }
