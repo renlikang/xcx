@@ -1,6 +1,6 @@
 <?php
 ini_set('date.timezone','Asia/Shanghai');
-
+session_start();
 $config = merge(
     require __DIR__ . '/../../common/config/main.php',
     require __DIR__ . '/../../common/config/main-local.php',
