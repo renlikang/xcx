@@ -46,7 +46,6 @@ class Login extends BaseAction
 
         if($user->validatePassword($password)) {
             Yii::$app->user->login($user);
-            var_dump(Yii::$app->user->getIsGuest());exit;
             Yii::info("login ", __CLASS__ . '::' . __FUNCTION__);
             $data = [
                 'aid' => $user->aid,
