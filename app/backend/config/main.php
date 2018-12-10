@@ -31,7 +31,8 @@ return [
 
         'session' => [
             // this is the name of the session cookie used for login on the frontend
-            'name' => 'advanced-api',
+            'name' => 'advanced-backend',
+            'timeout' => 72000
         ],
 //        'log' => [
 //            'traceLevel' => 3,
