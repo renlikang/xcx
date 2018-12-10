@@ -14,14 +14,14 @@ require __DIR__ . '/../../common/config/bootstrap.php';
 require __DIR__ . '/../config/bootstrap.php';
 if($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
-    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Origin: $origin");
     header("Access-Control-Allow-Headers: *");
     header("Access-Control-Allow-Credentials: true");
     header("Access-Control-Allow-Methods: PUT, POST, GET, OPTIONS");
     return true;
 } else {
     $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
-    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Origin: $origin");
     header("Access-Control-Allow-Headers: *");
     header("Access-Control-Allow-Credentials: true");
     header("Access-Control-Allow-Methods: PUT, POST, GET, OPTIONS");
