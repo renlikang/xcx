@@ -39,6 +39,16 @@ return [
             'socketClientFlags' => STREAM_CLIENT_CONNECT
         ],
 
+        'sessionCache' => [ //session cache
+            'class' => 'common\components\Cache',
+            'keyPrefix' => 'XIAN.TEST.SSID.',
+            'redis' => [
+                'hostname' => '127.0.0.1',
+                'port' => 6379,
+                'socketClientFlags' => STREAM_CLIENT_CONNECT
+            ]
+        ],
+
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@common/mail',

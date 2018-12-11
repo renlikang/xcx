@@ -19,7 +19,7 @@ return [
     ],
     'components' => [
         'request' => [
-            'csrfParam' => '_csrf-api',
+            'csrfParam' => '_csrf-backend',
         ],
 
         'user' => [
@@ -30,9 +30,12 @@ return [
         ],
 
         'session' => [
-            // this is the name of the session cookie used for login on the frontend
-            'name' => 'advanced-backend',
-            'timeout' => 72000
+            'class' => 'yii\web\CacheSession',
+            'timeout' => 2592000,
+            'cookieParams' => [
+                'httponly' => true,
+            ],
+            'cache' => 'sessionCache',
         ],
 //        'log' => [
 //            'traceLevel' => 3,

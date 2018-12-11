@@ -30,6 +30,16 @@ return [
             'charset' => 'utf8mb4',
         ],
 
+        'sessionCache' => [ //session cache
+            'class' => 'common\components\Cache',
+            'keyPrefix' => 'XIAN.PROD.SSID.',
+            'redis' => [
+                'hostname' => '127.0.0.1',
+                'port' => 6379,
+                'socketClientFlags' => STREAM_CLIENT_CONNECT
+            ]
+        ],
+
         'redis' => [
             'class' => 'common\components\Redis',
             'hostname' => '127.0.0.1',
