@@ -14,7 +14,7 @@ require __DIR__ . '/../../common/config/bootstrap.php';
 require __DIR__ . '/../config/bootstrap.php';
 if($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
-    if($_SERVER['https'] == "on") {
+    if($_SERVER['HTTPS'] == "on") {
         $origin = "https://backend.xian10.com";
     }
     header("Access-Control-Allow-Origin: $origin");
@@ -24,12 +24,12 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     return true;
 } else {
     $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
-    if($_SERVER['https'] == "on") {
+    if($_SERVER['HTTPS'] == "on") {
         $origin = "https://backend.xian10.com";
     }
 
     var_dump($origin, $_SERVER);
-    var_dump($_SERVER['https']);
+    var_dump($_SERVER['HTTPS']);
     exit;
     header("Access-Control-Allow-Origin: $origin");
     header("Access-Control-Allow-Headers: *");
