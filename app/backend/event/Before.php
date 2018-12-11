@@ -17,7 +17,8 @@ class Before extends Component
 
     private static function checkRoute()
     {
-        if(Yii::$app->getUser()->getIsGuest() && Yii::$app->controller->id != 'login') {
+
+        if(Yii::$app->getUser()->getIsGuest() && Yii::$app->controller->id != 'login' && Yii::$app->controller->id != 'index') {
             throw new ForbiddenHttpException("必须登录用户才能访问");
         }
 
