@@ -12,9 +12,11 @@ require __DIR__ . '/../../vendor/autoload.php';
 require __DIR__ . '/../../vendor/yiisoft/yii2/Yii.php';
 require __DIR__ . '/../../common/config/bootstrap.php';
 require __DIR__ . '/../config/bootstrap.php';
-var_dump($_SERVER);exit;
 if($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+    if($_SERVER['https'] == "on") {
+        $origin = "https://backend.xian10.com";
+    }
     header("Access-Control-Allow-Origin: $origin");
     header("Access-Control-Allow-Headers: *");
     header("Access-Control-Allow-Credentials: true");
@@ -22,6 +24,9 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     return true;
 } else {
     $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+    if($_SERVER['https'] == "on") {
+        $origin = "https://backend.xian10.com";
+    }
     header("Access-Control-Allow-Origin: $origin");
     header("Access-Control-Allow-Headers: *");
     header("Access-Control-Allow-Credentials: true");
