@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
         $origin = "https://backend.xian10.com";
     }
 
-    var_dump($origin);exit;
+    var_dump($origin, $_SERVER['https'] );exit;
     header("Access-Control-Allow-Origin: $origin");
     header("Access-Control-Allow-Headers: *");
     header("Access-Control-Allow-Credentials: true");
