@@ -12,7 +12,7 @@ require __DIR__ . '/../../vendor/autoload.php';
 require __DIR__ . '/../../vendor/yiisoft/yii2/Yii.php';
 require __DIR__ . '/../../common/config/bootstrap.php';
 require __DIR__ . '/../config/bootstrap.php';
-var_dump($_SERVER['HTTP_ORIGIN']);exit;
+var_dump($_SERVER);exit;
 if($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
     header("Access-Control-Allow-Origin: $origin");
