@@ -31,7 +31,7 @@ class Login extends BaseAction
     public function run()
     {
         if(Yii::$app->user->isGuest == false) {
-            Yii::$app->user->logout();
+            //Yii::$app->user->logout();
         }
 
         $username = Yii::$app->request->post('username');
