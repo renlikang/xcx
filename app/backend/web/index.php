@@ -24,10 +24,6 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     return true;
 } else {
     $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
-    if($_SERVER['HTTPS'] == "on") {
-        $origin = "https://backend.xian10.com";
-    }
-
     header("Access-Control-Allow-Origin: $origin");
     //header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Headers: *");
