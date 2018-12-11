@@ -28,7 +28,8 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
         $origin = "https://backend.xian10.com";
     }
 
-    header("Access-Control-Allow-Origin: $origin");
+    //header("Access-Control-Allow-Origin: $origin");
+    header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Headers: *");
     header("Access-Control-Allow-Credentials: true");
     header("Access-Control-Allow-Methods: PUT, POST, GET, OPTIONS");
