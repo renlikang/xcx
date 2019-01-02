@@ -12,7 +12,7 @@ use Yii;
 use yii\helpers\Json;
 use yii\web\BadRequestHttpException;
 /**
- * @SWG\Put(
+ * @SWG\Post(
  *     path="/login/wx",
  *     tags={"基础功能"},
  *     summary="用户登录",
