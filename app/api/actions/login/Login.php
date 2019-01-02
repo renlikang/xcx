@@ -20,7 +20,6 @@ use yii\web\BadRequestHttpException;
  *     produces={"application/json"},
  *     consumes = {"application/json"},
  *     @SWG\Parameter(in = "header",name = "Authorization",description = "用户Token",required = false, type = "integer"),
- *     @SWG\Parameter(in = "path",name = "id",description = "用户Id",required = true, type = "integer"),
  *     @SWG\Parameter(in = "formData",name = "nickName",description = "用户昵称", type = "string"),
  *     @SWG\Parameter(in = "formData",name = "avatarUrl",description = "用户头像图片的 URL", type = "string"),
  *     @SWG\Parameter(in = "formData",name = "gender",description = "性别（0 未知 1 男性 2 女性）", type = "integer"),
