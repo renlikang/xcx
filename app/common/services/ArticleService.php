@@ -8,6 +8,8 @@
 
 namespace common\services;
 
+use app\models\content\TagMapModel;
+use app\models\content\TagModel;
 use common\models\content\ArticleModel;
 use common\services\RetCode;
 use Yii;
@@ -20,6 +22,7 @@ class ArticleService
      * 新增文章
      *
      * @param $authorId
+     * @param  $arrTagName
      * @param $type
      * @param $source
      * @param $title
@@ -31,7 +34,7 @@ class ArticleService
      * @return bool
      * @throws HttpException
      */
-    public function create($authorId, $type, $source, $title, $subTitle, $summary, $headImg, $endImg, $content, $orderId)
+    public function create($authorId, $arrTagName, $type, $source, $title, $subTitle, $summary, $headImg, $endImg, $content, $orderId)
     {
         $model = new ArticleModel;
         $model->authorId = $authorId;
@@ -49,6 +52,12 @@ class ArticleService
             throw new HttpException(RetCode::DB_ERROR, RetCode::$responseMsg[RetCode::DB_ERROR], RetCode::DB_ERROR);
         }
 
+        foreach ($arrTagName as $k => $tagName) {
+            $md5 = md5($tagName);
+            $this->insertTag($tagName);
+            $this->mapTag($md5, $model->articleId);
+        }
+
         return ArticleModel::findOne($model->articleId);
     }
 
@@ -57,6 +66,7 @@ class ArticleService
      *
      * @param $articleId
      * @param $authorId
+     * @param $arrTagName
      * @param $source
      * @param $title
      * @param $subTitle
@@ -67,7 +77,7 @@ class ArticleService
      * @return bool
      * @throws HttpException
      */
-    public function update($articleId, $authorId, $source, $title, $subTitle, $summary, $headImg, $endImg, $content, $orderId)
+    public function update($articleId, $authorId, $arrTagName, $source, $title, $subTitle, $summary, $headImg, $endImg, $content, $orderId)
     {
         $model = ArticleModel::findOne($articleId);
         $model->authorId = $authorId;
@@ -82,6 +92,13 @@ class ArticleService
         if(!$model->save()){
             Yii::error($model->errors, __CLASS__.'::'.__FUNCTION__);
             throw new HttpException(RetCode::DB_ERROR, RetCode::$responseMsg[RetCode::DB_ERROR], RetCode::DB_ERROR);
+        }
+
+        TagMapModel::deleteAll(['mapId' => $articleId]);
+        foreach ($arrTagName as $k => $tagName) {
+            $md5 = md5($tagName);
+            $this->insertTag($tagName);
+            $this->mapTag($md5, $model->articleId);
         }
 
         return ArticleModel::findOne($articleId);
@@ -122,5 +139,31 @@ class ArticleService
     public function detail($articleId)
     {
         return ArticleModel::findOne($articleId);
+    }
+
+    public function insertTag($tagName)
+    {
+        $md5 = md5($tagName);
+        $model = TagModel::findOne($md5);
+        if(!$model) {
+            $model = new TagModel;
+            $model->md5TagName = $md5;
+            $model->tagName = $tagName;
+            $model->save();
+        }
+    }
+
+    /**
+     * tag映射文章
+     *
+     * @param $md5
+     * @param $articleId
+     */
+    public function mapTag($md5, $articleId)
+    {
+        $map = new TagMapModel;
+        $map->md5TagName = $md5;
+        $map->mapId = $articleId;
+        $map->save();
     }
 }

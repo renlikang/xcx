@@ -15,7 +15,6 @@ CREATE TABLE admin (
   UNIQUE KEY username(username)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '后台用户登录表';
 
-
 create table file_info(
   `fileId` varchar(255) NOT NULL COMMENT '文件md5标识',
   `path` varchar(255) not null comment 'path地址',
