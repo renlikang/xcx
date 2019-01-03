@@ -57,6 +57,7 @@ class Login extends BaseAction
         $crypt = new WXBizDataCrypt($appid, $session_key);
         $result = $crypt->decryptData($encryptedData, $iv, $data);
         if ($result != 200) {
+            Yii::error($result, __CLASS__.'::'.__FUNCTION__);
             throw new BadRequestHttpException("解密失败");
         }
         if ($user = UserModel::findOne(["openid" => $openid])) {
@@ -73,7 +74,9 @@ class Login extends BaseAction
         } else {
             $isNewUser = true;
             $user = new UserModel;
-            $user->
+            $user->openid = $openid;
+            $user->unionid = $unionid;
+            $user->session_key = $session_key;
             $user->save();
 
             if ($user->errors) {
