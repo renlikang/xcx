@@ -14,6 +14,7 @@ use common\models\content\ArticleModel;
 use common\services\RetCode;
 use Yii;
 use yii\data\Pagination;
+use yii\helpers\ArrayHelper;
 use yii\web\HttpException;
 
 class ArticleService
@@ -120,8 +121,18 @@ class ArticleService
         $pages = new Pagination(['totalCount' => $total, 'pageSize' => $size]);
         $pages->setPage($page - 1);
         $offset = $pages->offset;
-        /** @var ArticleModel[] $commentModel */
+        /** @var ArticleModel[] $data */
         $data = $list->offset($offset)->limit($pages->pageSize)->all();
+        foreach ($data as $k => $v) {
+            $data[$k] = $v->toArray();
+            $data[$k]['tag'] = null;
+            $md5Tag = TagMapModel::find()->where(['mapId' => $v->articleId])->all();
+            if($md5Tag) {
+                $md5Tag = ArrayHelper::getColumn($md5Tag, 'md5TagName');
+                $data[$k]['tag'] = TagMapModel::find()->where(['md5TagName' => $md5Tag])->all();
+            }
+        }
+
         $ret = [];
         $ret['list'] = $data;
         $ret['page'] = $page;
@@ -138,7 +149,15 @@ class ArticleService
      */
     public function detail($articleId)
     {
-        return ArticleModel::findOne($articleId);
+        $model = ArticleModel::findOne($articleId);
+        $md5Tag = TagMapModel::find()->where(['mapId' => $articleId])->all();
+        $model['tag'] = null;
+        if($md5Tag) {
+            $md5Tag = ArrayHelper::getColumn($md5Tag, 'md5TagName');
+            $model['tag'] = TagMapModel::find()->where(['md5TagName' => $md5Tag])->all();
+        }
+
+        return $model;
     }
 
     public function insertTag($tagName)
