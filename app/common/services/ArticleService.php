@@ -8,8 +8,8 @@
 
 namespace common\services;
 
-use app\models\content\TagMapModel;
-use app\models\content\TagModel;
+use common\models\content\TagMapModel;
+use common\models\content\TagModel;
 use common\models\content\ArticleModel;
 use common\services\RetCode;
 use Yii;
