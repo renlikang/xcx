@@ -56,7 +56,7 @@ class Login extends BaseAction
         $appid = Yii::$app->params['appid'];
         $crypt = new WXBizDataCrypt($appid, $session_key);
         $result = $crypt->decryptData($encryptedData, $iv, $data);
-        if ($result != 200 || $result != 0 ) {
+        if ($result != 200 && $result != 0 ) {
             Yii::error($result, __CLASS__.'::'.__FUNCTION__);
             throw new BadRequestHttpException("解密失败");
         }
