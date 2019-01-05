@@ -58,12 +58,24 @@ create table `tag` (
   PRIMARY KEY (`md5TagName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='标签表';
 
-
 create table user_read_record(
-  `recordId` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户阅读记录ID',
   `uid` int(11) not null comment '用户ID',
+  `articleId` int(11) not null comment '文章ID',
   `status` tinyint(1) not null default 1 comment '阅读状态 1：浏览 2：阅读',
   `nums` tinyint(1) not null default 1 comment '浏览次数',
-
+  `cTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+  `uTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `deleteFlag` tinyint(1) NOT NULL DEFAULT '0' COMMENT '删除标识:0正常，1删除',
+  PRIMARY KEY (`uid`, `articleId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户阅读记录';
+
+create table user_read_last(
+  `uid` int(11) not null comment '用户ID',
+  `preArticleType` varchar(255) not null comment '上次文章类型',
+  `articleType` varchar(255) not null comment '现在的文章类型',
+  `cTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+  `uTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `deleteFlag` tinyint(1) NOT NULL DEFAULT '0' COMMENT '删除标识:0正常，1删除',
+  PRIMARY KEY (`uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户最后阅读记录';
 
