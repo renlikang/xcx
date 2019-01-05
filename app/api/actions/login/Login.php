@@ -111,6 +111,7 @@ class Login extends BaseAction
             Yii::error("微信 API 返回错误:" . json_encode($content), __CLASS__.'::'.__FUNCTION__);
             throw new \Exception("微信 API 返回错误:" . json_encode($content));
         } else {
+            Yii::error($content, __CLASS__.'::'.__FUNCTION__);
             return $content;
         }
     }
