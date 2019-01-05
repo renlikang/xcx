@@ -58,3 +58,12 @@ create table `tag` (
   PRIMARY KEY (`md5TagName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='标签表';
 
+
+create table user_read_record(
+  `recordId` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户阅读记录ID',
+  `uid` int(11) not null comment '用户ID',
+  `status` tinyint(1) not null default 1 comment '阅读状态 1：浏览 2：阅读',
+  `nums` tinyint(1) not null default 1 comment '浏览次数',
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户阅读记录';
+

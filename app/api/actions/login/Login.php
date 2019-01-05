@@ -56,7 +56,7 @@ class Login extends BaseAction
         $appid = Yii::$app->params['appid'];
         $crypt = new WXBizDataCrypt($appid, $session_key);
         $result = $crypt->decryptData($encryptedData, $iv, $data);
-        if ($result != 200) {
+        if ($result != 200 || $result != 0 ) {
             Yii::error($result, __CLASS__.'::'.__FUNCTION__);
             throw new BadRequestHttpException("解密失败");
         }
@@ -111,7 +111,6 @@ class Login extends BaseAction
             Yii::error("微信 API 返回错误:" . json_encode($content), __CLASS__.'::'.__FUNCTION__);
             throw new \Exception("微信 API 返回错误:" . json_encode($content));
         } else {
-            Yii::error($content, __CLASS__.'::'.__FUNCTION__);
             return $content;
         }
     }
