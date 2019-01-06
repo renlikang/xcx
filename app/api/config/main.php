@@ -24,6 +24,10 @@ return [
                 'application/json' => 'yii\web\JsonParser',
             ]
         ],
+        
+        'authorization' => [
+            'class' => 'api\components\Authorization'
+        ],
         'user' => [
             'identityClass' => 'common\models\UserModel',
             'enableAutoLogin' => true,
