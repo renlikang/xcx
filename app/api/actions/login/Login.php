@@ -70,6 +70,7 @@ class Login extends BaseAction
 
             if ($user->errors) {
                 Yii::error("用户更新失败" . json_encode($user->errors), __CLASS__.'::'.__FUNCTION__);
+                throw new BadRequestHttpException("用户更新失败");
             }
         } else {
             $isNewUser = true;
@@ -81,6 +82,7 @@ class Login extends BaseAction
 
             if ($user->errors) {
                 Yii::error("用户创建失败" . json_encode($user->errors), __CLASS__.'::'.__FUNCTION__);
+                throw new BadRequestHttpException("用户创建失败");
             }
         }
 
