@@ -14,6 +14,9 @@ class Before extends Component
 {
     public static function index(Event $event)
     {
+        if ($token = Yii::$app->request->headers['authorization']) {
+            Yii::$app->user->loginByAccessToken($token);
+        }
         self::checkRoute();
         return true;
     }
@@ -23,7 +26,6 @@ class Before extends Component
         $controllerId = Yii::$app->controller->id;
         $actionId = Yii::$app->controller->action->id;
         if (self::needLogin($controllerId, $actionId)) {
-            var_dump(Yii::$app->user->id);exit;
             if (Yii::$app->getUser()->getIsGuest()) {
                 throw new ForbiddenHttpException("必须登录用户才能访问");
             }

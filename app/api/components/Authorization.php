@@ -13,6 +13,5 @@ class Authorization extends Component
         if ($token = Yii::$app->request->headers['authorization']) {
             Yii::$app->user->loginByAccessToken($token);
         }
-        exit;
     }
 }
