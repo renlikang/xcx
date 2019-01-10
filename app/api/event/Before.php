@@ -23,7 +23,7 @@ class Before extends Component
         $controllerId = Yii::$app->controller->id;
         $actionId = Yii::$app->controller->action->id;
         if (self::needLogin($controllerId, $actionId)) {
-            var_dump(222222);exit;
+            var_dump(Yii::$app->user->id);exit;
             if (Yii::$app->getUser()->getIsGuest()) {
                 throw new ForbiddenHttpException("必须登录用户才能访问");
             }
