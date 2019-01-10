@@ -29,8 +29,6 @@ class Before extends Component
             if (Yii::$app->getUser()->getIsGuest()) {
                 throw new ForbiddenHttpException("必须登录用户才能访问");
             }
-
-            var_dump(Yii::$app->user->id);exit;
         }
     }
 
