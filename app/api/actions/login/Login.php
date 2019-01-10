@@ -43,8 +43,9 @@ class Login extends BaseAction
     {
         $code = Yii::$app->request->post('code');
         $encryptedData = Yii::$app->request->post('encryptedData');
+        $nickName = Yii::$app->request->post('nickName');
+        $avatarUrl = Yii::$app->request->post('avatarUrl');
         $iv = Yii::$app->request->post('iv');
-
         if (empty($code) || !$encryptedData || !$iv) {
             throw new BadRequestHttpException("参数错误");
         }
@@ -78,6 +79,8 @@ class Login extends BaseAction
             $user->openid = $openid;
             $user->unionid = $unionid;
             $user->session_key = $session_key;
+            $user->nickName = $nickName;
+            $user->avatarUrl = $avatarUrl;
             $user->save();
 
             if ($user->errors) {
