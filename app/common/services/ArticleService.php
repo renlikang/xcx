@@ -178,6 +178,7 @@ class ArticleService
             return null;
         }
 
+        var_dump($count, $data);exit;
         $num = rand(0, $count);
         /** @var ArticleModel $model */
         $model = $data[$num];
