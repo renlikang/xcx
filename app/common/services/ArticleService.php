@@ -178,8 +178,12 @@ class ArticleService
             return null;
         }
 
-        var_dump($count, $data);exit;
-        $num = rand(0, $count);
+        if($count > 20) {
+            $num = rand(0, 19);
+        } else {
+            $num = rand(0, $count - 1);
+        }
+
         /** @var ArticleModel $model */
         $model = $data[$num];
         $read = UserReadRecordModel::findOne(['uid' => $uid, 'articleId' => $model->articleId]);
