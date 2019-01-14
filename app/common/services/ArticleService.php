@@ -144,12 +144,19 @@ class ArticleService
     }
 
 
-
     public function articleShow($uid)
     {
         if(!Yii::$app->cache->exists(date("Y-m-d"))) {
             Yii::$app->cache->set(date('Y-m-d'), 1);
-            ArticleModel::updateAll(['deleteFlag' => 1], ['>=' , 'cTime', date('Y-m-d', time() - 7 * 3600 * 24)]);
+            /** @var ArticleModel[] $articleAll */
+            $articleAll = ArticleModel::find()->andWhere(['<' , 'cTime', date('Y-m-d', time() - 7 * 3600 * 24)])->all();
+            foreach ($articleAll as $k => $v) {
+                $sameTag = TagMapModel::findOne(['md5TagName' => md5('时事类'), 'mapId' => $v->articleId]);
+                if($sameTag) {
+                    $v->deleteFlag = 1;
+                    $v->save();
+                }
+            }
         }
 
         $list = ArticleModel::find()->where(['deleteFlag' => 0]);
