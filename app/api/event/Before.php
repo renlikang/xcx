@@ -14,6 +14,10 @@ class Before extends Component
 {
     public static function index(Event $event)
     {
+        if(Yii::$app->controller->id == 'game') {
+            return true;
+        }
+        
         if ($token = Yii::$app->request->headers['authorization']) {
             Yii::$app->user->loginByAccessToken($token);
         }
