@@ -13,6 +13,7 @@ use yii\web\HttpException;
 
 class Create extends BaseAction
 {
+    public $modelClass = "common\models\content\ArticleComment";
     public function run()
     {
         var_dump(1);exit;
