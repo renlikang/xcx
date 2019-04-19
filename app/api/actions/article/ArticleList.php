@@ -17,8 +17,13 @@ class ArticleList extends BaseAction
 {
     public function run()
     {
-        $page = Yii::$app->request->get('page');
-        $size = Yii::$app->request->get('size');
-        return RetCode::response(RetCode::SUCCESS, (new ArticleService)->articleList($page, $size));
+        if(Yii::$app->user->isGuest) {
+            return RetCode::response(RetCode::SUCCESS, []);
+        }
+
+        return RetCode::response(RetCode::SUCCESS, (new ArticleService)->articleShow(Yii::$app->user->id));
+//        $page = Yii::$app->request->get('page');
+//        $size = Yii::$app->request->get('size');
+//        return RetCode::response(RetCode::SUCCESS, (new ArticleService)->articleList($page, $size));
     }
 }

@@ -20,6 +20,13 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-api',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
+        ],
+        
+        'authorization' => [
+            'class' => 'api\components\Authorization'
         ],
         'user' => [
             'identityClass' => 'common\models\UserModel',

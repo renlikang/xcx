@@ -30,6 +30,16 @@ return [
             'charset' => 'utf8mb4',
         ],
 
+        'sessionCache' => [ //session cache
+            'class' => 'common\components\Cache',
+            'keyPrefix' => 'XIAN.PROD.SSID.',
+            'redis' => [
+                'hostname' => '127.0.0.1',
+                'port' => 6379,
+                'socketClientFlags' => STREAM_CLIENT_CONNECT
+            ]
+        ],
+
         'redis' => [
             'class' => 'common\components\Redis',
             'hostname' => '127.0.0.1',
@@ -37,6 +47,15 @@ return [
             'port' => '6379',
             'database' => 1,
             'socketClientFlags' => STREAM_CLIENT_CONNECT
+        ],
+
+        'wx' => [
+            'class' => 'common\components\Wx',
+            'host' =>'https://api.weixin.qq.com',
+            'appId' => 'wx78717a7a86f51ae9',
+            'secret' => '63c6828e7d37a3b5288414c4cf92d5e2',
+            'grant_type' => 'authorization_code',
+            'templateId' => '',
         ],
 
         'mailer' => [

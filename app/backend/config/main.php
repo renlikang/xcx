@@ -19,16 +19,23 @@ return [
     ],
     'components' => [
         'request' => [
-            'csrfParam' => '_csrf-api',
+            'csrfParam' => '_csrf-backend',
         ],
+
         'user' => [
-            'identityClass' => 'common\models\UserModel',
-            'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
+            'identityClass' => 'common\models\admin\AdminModel',
+            'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+            'authTimeout' => 2592000,
+            'enableSession' => true,
         ],
+
         'session' => [
-            // this is the name of the session cookie used for login on the frontend
-            'name' => 'advanced-api',
+            'class' => 'yii\web\CacheSession',
+            'timeout' => 2592000,
+            'cookieParams' => [
+                'httponly' => true,
+            ],
+            'cache' => 'sessionCache',
         ],
 //        'log' => [
 //            'traceLevel' => 3,

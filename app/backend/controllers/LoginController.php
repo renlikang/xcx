@@ -13,6 +13,7 @@ class LoginController extends Controller
     {
         return [
             'index' => 'backend\actions\login\Login',
+            'test' => 'backend\actions\login\Test',
         ];
     }
 }

@@ -19,11 +19,13 @@ use yii\rest\Controller;
  *     produces={"application/json"},
  *     consumes = {"application/json"},
  *     @SWG\Parameter(in = "formData",name = "authorId",description = "作者编号",required = false, type = "integer"),
+ *     @SWG\Parameter(in = "formData",name = "tagName[]",description = "文章标签",required = false, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "source",description = "文章来源",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "title",description = "文章标题",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "subTitle",description = "副标题",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "summary",description = "摘要",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "headImg",description = "封面图片地址",required = true, type = "string"),
+ *     @SWG\Parameter(in = "formData",name = "endImg",description = "尾图地址",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "content",description = "文章内容",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "orderId",description = "权重",required = true, type = "integer"),
  *     @SWG\Response(response = 200,description = " success"),
@@ -37,12 +39,14 @@ use yii\rest\Controller;
  *     produces={"application/json"},
  *     consumes = {"application/json"},
  *     @SWG\Parameter(in = "formData",name = "articleId",description = "文章编号",required = true, type = "integer"),
+ *     @SWG\Parameter(in = "formData",name = "tagName[]",description = "文章标签",required = false, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "authorId",description = "作者编号",required = false, type = "integer"),
  *     @SWG\Parameter(in = "formData",name = "source",description = "文章来源",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "title",description = "文章标题",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "subTitle",description = "副标题",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "summary",description = "摘要",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "headImg",description = "封面图片地址",required = true, type = "string"),
+ *     @SWG\Parameter(in = "formData",name = "endImg",description = "尾图地址",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "content",description = "文章内容",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "orderId",description = "权重",required = true, type = "integer"),
  *     @SWG\Response(response = 200,description = " success"),
@@ -72,6 +76,17 @@ use yii\rest\Controller;
  *     @SWG\Response(response = 200,description = " success"),
  * )
  *
+ * @SWG\Post(
+ *     path="/article/delete",
+ *     tags={"文章管理"},
+ *     summary="删除文章",
+ *     description="",
+ *     produces={"application/json"},
+ *     consumes = {"application/json"},
+ *     @SWG\Parameter(in = "formData",name = "articleId",description = "文章编号",required = true, type = "integer"),
+ *     @SWG\Response(response = 200,description = " success"),
+ * )
+ *
  *
  */
 class ArticleController extends Controller
@@ -96,6 +111,9 @@ class ArticleController extends Controller
 
             'detail' => [
                 'class' => 'backend\actions\article\Detail',
+            ],
+            'delete' => [
+               'class' =>  'backend\actions\article\Delete',
             ],
         ];
     }

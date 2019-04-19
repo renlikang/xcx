@@ -7,4 +7,11 @@ return [
             'api/actions',
         ]
     ],
+
+    'permissionRoute' => [
+        'guest' => [
+            'login' => ['*'],
+            'index' => ['*'],
+        ],
+    ],
 ];
