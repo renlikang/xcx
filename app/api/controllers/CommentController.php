@@ -51,7 +51,7 @@ class CommentController extends ActiveController
         $actions['create']['checkAccess'] = "";
         $actions['create']['scenario'] = $this->createScenario;
         unset($actions['update']);
-        var_dump($actions);exit;
+        var_dump($actions['create']);exit;
         return $actions;
     }
 }
