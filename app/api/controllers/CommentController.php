@@ -48,7 +48,6 @@ class CommentController extends ActiveController
         $actions['index']['class'] = 'api\actions\comment\Index';
         $actions['create']['class'] = 'api\actions\comment\Create';
         unset($actions['update']);
-        var_dump($actions['create']);exit;
         return $actions;
     }
 }
