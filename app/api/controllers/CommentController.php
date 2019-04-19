@@ -15,7 +15,7 @@ use yii\rest\ActiveController;
  *     description="",
  *     produces={"application/json"},
  *     consumes = {"application/json"},
- *      @SWG\Parameter(in = "head",name = "page",description = "页数",required = true, type = "integer"),
+ *      @SWG\Parameter(in = "header",name = "page",description = "页数",required = true, type = "integer"),
  *     @SWG\Parameter(in = "query",name = "page",description = "页数",required = true, type = "integer"),
  *     @SWG\Parameter(in = "query",name = "size",description = "每页个数",required = true, type = "integer"),
  *     @SWG\Response(response = 200,description = " success"),
