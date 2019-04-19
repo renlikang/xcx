@@ -47,9 +47,6 @@ class CommentController extends ActiveController
         $actions = parent::actions();
         $actions['index']['class'] = 'api\actions\comment\Index';
         $actions['create']['class'] = 'api\actions\comment\Create';
-        $actions['create']['modelClass'] = $this->modelClass;
-        $actions['create']['checkAccess'] = "";
-        $actions['create']['scenario'] = $this->createScenario;
         unset($actions['update']);
         var_dump($actions['create']);exit;
         return $actions;
