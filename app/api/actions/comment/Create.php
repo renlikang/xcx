@@ -17,7 +17,6 @@ class Create extends BaseAction
     public $scenario;
     public function run()
     {
-        var_dump(1);exit;
         $articleId = Yii::$app->request->post('articleId');
         $parentId = Yii::$app->request->post('parentId');
         if(YII_ENV != "prod" && Yii::$app->user->isGuest == true) {
