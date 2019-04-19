@@ -7,6 +7,7 @@ namespace api\actions\comment;
 
 use api\actions\BaseAction;
 use common\models\content\ArticleComment;
+use common\models\content\ArticleModel;
 use common\services\RetCode;
 use Yii;
 use yii\web\HttpException;
@@ -18,6 +19,10 @@ class Create extends BaseAction
     public function run()
     {
         $articleId = Yii::$app->request->post('articleId');
+        if(!ArticleModel::findOne($articleId)) {
+            throw new HttpException("400", "文章不存在");
+        }
+        
         $parentId = Yii::$app->request->post('parentId');
         if(YII_ENV != "prod" && Yii::$app->user->isGuest == true) {
             $uid = 2;
