@@ -46,6 +46,14 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => ['comment'],
+                    'pluralize' => false,
+                    'extraPatterns' => [
+                        'GET comment/<articleId>' => 'index',
+                    ]
+                ],
             ],
         ],
     ],
