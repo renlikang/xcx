@@ -12,6 +12,7 @@ return [
         'guest' => [
             'login' => ['*'],
             'index' => ['*'],
+            'comment' => ['index']
         ],
     ],
 ];
