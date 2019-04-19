@@ -21,7 +21,18 @@ use yii\rest\ActiveController;
  *     @SWG\Response(response = 200,description = " success"),
  * )
  *
- *
+ * @SWG\Post(
+ *     path="/comment",
+ *     tags={"评论管理"},
+ *     summary="文章评论",
+ *     description="",
+ *     produces={"application/json"},
+ *     consumes = {"application/json"},
+ *     @SWG\Parameter(in = "formData",name = "articleId",description = "文章Id",required = true, type = "integer"),
+ *     @SWG\Parameter(in = "formData",name = "parentId",description = "评论为0 回复为commentId",required = true, type = "integer"),
+ *     @SWG\Parameter(in = "formData",name = "content",description = "评论/回复内容",required = true, type = "integer"),
+ *     @SWG\Response(response = 200,description = " success"),
+ * )
  *
  */
 class CommentController extends ActiveController
@@ -35,7 +46,8 @@ class CommentController extends ActiveController
     {
         $actions = parent::actions();
         $actions['index']['class'] = 'api\actions\comment\Index';
-        unset($actions['create'], $actions['update']);
+        $actions['create']['class'] = 'api\actions\comment\Create';
+        unset($actions['update']);
         return $actions;
     }
 }

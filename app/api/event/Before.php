@@ -38,7 +38,6 @@ class Before extends Component
 
     public static function needLogin($controllerId, $actionId)
     {
-        var_dump($actionId);exit;
         if(isset(Yii::$app->params['permissionRoute']['guest'][$controllerId])) {
             if (in_array('*', Yii::$app->params['permissionRoute']['guest'][$controllerId])) {
                 return false;
