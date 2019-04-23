@@ -27,7 +27,7 @@ class PraiseController extends ActiveController
     /**
      * @var string
      */
-    public $modelClass = "";
+    public $modelClass = "common\models\content\ArticlePraise";
 
     public function actions()
     {
