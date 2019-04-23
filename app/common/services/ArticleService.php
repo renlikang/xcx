@@ -254,6 +254,8 @@ class ArticleService
             $ret[$k] = $v->toArray();
             if((int)$v->parentId > 0) {
                 $ret[$k]['replayComment'] = ArticleComment::findOne($v->parentId);
+            } else {
+                $ret[$k]['replayComment'] = null;
             }
         }
 
