@@ -27,6 +27,7 @@ use Yii;
 class ArticleModel extends \yii\db\ActiveRecord
 {
     const PGC = 1;
+    const UGC = 2;
     /**
      * {@inheritdoc}
      */

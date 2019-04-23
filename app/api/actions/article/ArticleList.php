@@ -22,8 +22,5 @@ class ArticleList extends BaseAction
         }
 
         return RetCode::response(RetCode::SUCCESS, (new ArticleService)->articleShow(Yii::$app->user->id));
-//        $page = Yii::$app->request->get('page');
-//        $size = Yii::$app->request->get('size');
-//        return RetCode::response(RetCode::SUCCESS, (new ArticleService)->articleList($page, $size));
     }
 }

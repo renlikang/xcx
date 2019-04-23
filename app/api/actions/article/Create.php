@@ -1,0 +1,43 @@
+<?php
+/**
+ * @author rlk
+ */
+
+namespace api\actions\article;
+
+use api\actions\BaseAction;
+use common\models\content\ArticleModel;
+use common\services\ArticleService;
+use common\services\RetCode;
+use Yii;
+use yii\helpers\Json;
+
+class Create extends BaseAction
+{
+    public function run()
+    {
+        $authorId = Yii::$app->user->id;
+        $source = Yii::$app->request->post('source');
+        $title = Yii::$app->request->post('title');
+        $subTitle = Yii::$app->request->post('subTitle');
+        $summary = Yii::$app->request->post('summary');
+        $headImg = Yii::$app->request->post('headImg') ?? '';
+        $endImg = Yii::$app->request->post('endImg') ?? '';
+        $content = Yii::$app->request->post('content');
+        $orderId = Yii::$app->request->post('orderId');
+        $tagName = Yii::$app->request->post('tagName') ?? [];
+        if($content) {
+            $content = Json::decode($content, true);
+        }
+
+        if($this->type == 'update') {
+            $articleId = Yii::$app->request->post('articleId');
+            $ret = (new ArticleService)->update($articleId, $authorId, $tagName, $source, $title, $subTitle, $summary, $headImg, $endImg, $content, $orderId);
+
+        } else {
+            $ret = (new ArticleService())->create($authorId, $tagName, ArticleModel::UGC, $source, $title, $subTitle, $summary, $headImg, $endImg, $content, $orderId);
+        }
+
+        return RetCode::response(RetCode::SUCCESS, $ret);
+    }
+}
