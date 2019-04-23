@@ -24,7 +24,10 @@ use yii\rest\ActiveController;
  */
 class PraiseController extends ActiveController
 {
-    public $modelClass = false;
+    /**
+     * @var string
+     */
+    public $modelClass = "";
 
     public function actions()
     {
