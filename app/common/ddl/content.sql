@@ -45,6 +45,46 @@ CREATE TABLE `article` (
   KEY `authorId` (`authorId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='文章表';
 
+CREATE TABLE `article_comment` (
+  `commentId` int(11) NOT NULL AUTO_INCREMENT COMMENT '评论ID',
+  `articleId` int(11) NOT NULL COMMENT '内容ID',
+  `parentId` int(11) NOT NULL DEFAULT '0' COMMENT '父ID',
+  `uid` int(11) NOT NULL DEFAULT '0' COMMENT '用户ID',
+  `content` text COLLATE utf8mb4_unicode_ci COMMENT '评论内容',
+  `cTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+  `uTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `deleteFlag` tinyint(1) NOT NULL DEFAULT '0' COMMENT '删除标识:0正常，1删除',
+  PRIMARY KEY (`commentId`),
+  KEY `articleId` (`articleId`),
+  KEY `uid` (`uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='评论表';
+
+
+CREATE TABLE `article_praise` (
+  `praiseId` int(11) NOT NULL AUTO_INCREMENT COMMENT '点赞ID',
+  `articleId` int(11) NOT NULL COMMENT '内容ID',
+  `uid` int(11) NOT NULL DEFAULT '0' COMMENT '用户ID',
+  `cTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+  `uTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `deleteFlag` tinyint(1) NOT NULL DEFAULT '0' COMMENT '删除标识:0正常，1删除',
+  PRIMARY KEY (`praiseId`),
+  KEY `articleId` (`articleId`),
+  KEY `uid` (`uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文章点赞表';
+
+CREATE TABLE `comment_praise` (
+  `praiseId` int(11) NOT NULL AUTO_INCREMENT COMMENT '点赞ID',
+  `commentId` int(11) NOT NULL COMMENT '内容ID',
+  `uid` int(11) NOT NULL DEFAULT '0' COMMENT '用户ID',
+  `cTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+  `uTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `deleteFlag` tinyint(1) NOT NULL DEFAULT '0' COMMENT '删除标识:0正常，1删除',
+  PRIMARY KEY (`praiseId`),
+  KEY `articleId` (`commentId`),
+  KEY `uid` (`uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='评论点赞表';
+
+
 
 create table `tag_map` (
   `md5TagName` char(32) COMMENT '标签名称',

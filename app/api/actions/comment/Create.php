@@ -28,12 +28,13 @@ class Create extends BaseAction
             throw new HttpException("400", "您回复的评论不存在");
         }
 
-        if(YII_ENV != "prod" && Yii::$app->user->isGuest == true) {
-            $uid = 2;
-        } else {
-            $uid = Yii::$app->user->id;
-        }
+//        if(YII_ENV != "prod" && Yii::$app->user->isGuest == true) {
+//            $uid = 2;
+//        } else {
+//            $uid = Yii::$app->user->id;
+//        }
 
+        $uid = Yii::$app->user->id;
         $content = Yii::$app->request->post('content');
         $model = new ArticleComment;
         $model->articleId = $articleId;
