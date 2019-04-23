@@ -8,6 +8,7 @@
 
 namespace common\services;
 
+use common\models\content\ArticleComment;
 use common\models\content\TagMapModel;
 use common\models\content\TagModel;
 use common\models\content\ArticleModel;
@@ -235,6 +236,31 @@ class ArticleService
 
         return $model;
     }
+
+    public function commentList($articleId, $page, $size)
+    {
+        $ret = [];
+        $model = ArticleComment::find();
+        $model->where(['articleId' => $articleId]);
+        $model->orderBy('commentId desc');
+        $modelClone = clone $model;
+        $total = (int)$modelClone->count();
+        $pages = new Pagination(['totalCount' => $total, 'pageSize' => $size]);
+        $pages->setPage($page - 1);
+        $offset = $pages->offset;
+        /** @var ArticleComment[] $commentModel */
+        $commentModel = $model->offset($offset)->limit($pages->pageSize)->all();
+        foreach ($commentModel as $k => $v) {
+            $ret[$k] = $v->toArray();
+            if((int)$v->parentId > 0) {
+                $ret[$k]['replayComment'] = ArticleComment::findOne($v->parentId);
+            }
+        }
+
+        return ['list' =>$ret, 'page' => $page, 'size' => $size, 'total' => $total];
+    }
+
+
 
     /**
      * 详情

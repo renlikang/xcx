@@ -27,7 +27,7 @@ class Create extends BaseAction
         if($parentId && !ArticleComment::findOne($parentId)) {
             throw new HttpException("400", "您回复的评论不存在");
         }
-        
+
         if(YII_ENV != "prod" && Yii::$app->user->isGuest == true) {
             $uid = 2;
         } else {
