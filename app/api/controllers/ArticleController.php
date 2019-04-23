@@ -36,7 +36,6 @@ use yii\rest\Controller;
  *     produces={"application/json"},
  *     consumes = {"application/json"},
  *     @SWG\Parameter(in = "formData",name = "tagName[]",description = "文章标签",required = false, type = "string"),
- *     @SWG\Parameter(in = "formData",name = "source",description = "文章来源",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "title",description = "文章标题",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "subTitle",description = "副标题",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "summary",description = "摘要",required = true, type = "string"),
