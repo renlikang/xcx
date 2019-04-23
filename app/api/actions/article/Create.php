@@ -17,7 +17,7 @@ class Create extends BaseAction
     public function run()
     {
         $authorId = Yii::$app->user->id;
-        $source = Yii::$app->request->post('source');
+        $source = "个人";
         $title = Yii::$app->request->post('title');
         $subTitle = Yii::$app->request->post('subTitle');
         $summary = Yii::$app->request->post('summary');
