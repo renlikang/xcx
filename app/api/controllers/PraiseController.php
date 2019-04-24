@@ -26,7 +26,6 @@ use yii\rest\ActiveController;
  *     description="",
  *     produces={"application/json"},
  *     consumes = {"application/json"},
- *     @SWG\Parameter(in = "formData",name = "id",description = "文章/评论Id",required = true, type = "integer"),
  *     @SWG\Parameter(in = "formData",name = "type",description = "文章为 article 评论为 comment",required = true, type = "string"),
  *     @SWG\Response(response = 200,description = " success"),
  * )
