@@ -43,6 +43,7 @@ class PraiseController extends ActiveController
     public function actions()
     {
         $actions = parent::actions();
+        unset($actions['index']);
         //$actions['create']['class'] = 'api\actions\praise\Create';
         return $actions;
     }
