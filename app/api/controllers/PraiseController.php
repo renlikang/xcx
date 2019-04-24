@@ -37,20 +37,19 @@ class PraiseController extends ActiveController
     /**
      * @var string
      */
-    public $modelClass = 'common\models\content\ArticlePraise';
+    //public $modelClass = 'common\models\content\ArticlePraise';
+
+    /**
+     * @var string
+     */
+    public $modelClass = 'common\models\content\ArticleComment';
 
     public function actions()
     {
         $actions = parent::actions();
         $actions['index']['class'] = 'api\actions\comment\Index';
         $actions['create']['class'] = 'api\actions\comment\Create';
-//        $actions['index']['class'] = 'yii\rest\IndexAction';
-//        $actions['create'] = [
-//            'class' => 'api\actions\praise\Create',
-//            'modelClass' => $this->modelClass,
-//            'checkAccess' => [$this, 'checkAccess'],
-//            'scenario' => $this->createScenario,
-//        ];
+        unset($actions['update']);
         return $actions;
     }
 }
