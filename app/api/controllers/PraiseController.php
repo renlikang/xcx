@@ -43,13 +43,13 @@ class PraiseController extends ActiveController
     public function actions()
     {
         $actions = parent::actions();
+        $actions['index']['class'] = 'yii\rest\IndexAction';
         $actions['create'] = [
             'class' => 'api\actions\praise\Create',
             'modelClass' => $this->modelClass,
             'checkAccess' => [$this, 'checkAccess'],
             'scenario' => $this->createScenario,
         ];
-        unset($actions['index']);
         return $actions;
     }
 }
