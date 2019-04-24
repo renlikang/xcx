@@ -24,17 +24,6 @@ use yii\rest\ActiveController;
  */
 class PraiseController extends ActiveController
 {
-    protected function verbs()
-    {
-        return [
-            'index' => ['GET', 'HEAD'],
-            'view' => ['GET', 'HEAD'],
-            'create' => ['POST'],
-            'update' => ['PUT', 'PATCH'],
-            'delete' => ['DELETE'],
-        ];
-    }
-
     /**
      * @var string
      */
@@ -43,13 +32,15 @@ class PraiseController extends ActiveController
     public function actions()
     {
         $actions = parent::actions();
-        $actions['index']['class'] = 'yii\rest\IndexAction';
-        $actions['create'] = [
-            'class' => 'api\actions\praise\Create',
-            'modelClass' => $this->modelClass,
-            'checkAccess' => [$this, 'checkAccess'],
-            'scenario' => $this->createScenario,
-        ];
+        $actions['index']['class'] = 'api\actions\comment\Index';
+        $actions['create']['class'] = 'api\actions\comment\Create';
+//        $actions['index']['class'] = 'yii\rest\IndexAction';
+//        $actions['create'] = [
+//            'class' => 'api\actions\praise\Create',
+//            'modelClass' => $this->modelClass,
+//            'checkAccess' => [$this, 'checkAccess'],
+//            'scenario' => $this->createScenario,
+//        ];
         return $actions;
     }
 }
