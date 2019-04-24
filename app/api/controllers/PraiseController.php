@@ -9,6 +9,16 @@ namespace api\controllers;
 use yii\rest\ActiveController;
 
 /**
+ * @SWG\Get(
+ *     path="/praise",
+ *     tags={"点赞管理"},
+ *     summary="点赞列表",
+ *     description="",
+ *     produces={"application/json"},
+ *     consumes = {"application/json"},
+ *     @SWG\Response(response = 200,description = " success"),
+ * )
+ *
  * @SWG\Post(
  *     path="/praise",
  *     tags={"点赞管理"},
@@ -41,7 +51,6 @@ class PraiseController extends ActiveController
 //            'checkAccess' => [$this, 'checkAccess'],
 //            'scenario' => $this->createScenario,
 //        ];
-        var_dump($actions);exit;
         return $actions;
     }
 }
