@@ -40,11 +40,12 @@ class PraiseController extends ActiveController
      */
     public $modelClass = 'common\models\content\ArticlePraise';
 
-//    public function actions()
-//    {
-//        $actions = parent::actions();
-////        $actions['create']['class'] = 'api\actions\praise\Create';
-////        unset($actions['update']);
-//        return $actions;
-//    }
+    public function actions()
+    {
+        $actions = parent::actions();
+        $actions['create']['class'] = 'api\actions\praise\Create';
+        var_dump($actions['create']);exit;
+//        unset($actions['update']);
+        return $actions;
+    }
 }
