@@ -24,6 +24,17 @@ use yii\rest\ActiveController;
  */
 class PraiseController extends ActiveController
 {
+    protected function verbs()
+    {
+        return [
+            'index' => ['GET', 'HEAD', 'POST'],
+            'view' => ['GET', 'HEAD'],
+            'create' => ['POST'],
+            'update' => ['PUT', 'PATCH'],
+            'delete' => ['DELETE'],
+        ];
+    }
+
     /**
      * @var string
      */
