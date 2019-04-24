@@ -13,11 +13,12 @@ use common\models\content\ArticlePraiseModel;
 use common\models\content\CommentPraiseModel;
 use common\services\RetCode;
 use Yii;
+use yii\base\Model;
 
 class Create extends BaseAction
 {
-    public $modelClass = false;
-    public $scenario;
+    public $modelClass;
+    public $scenario = Model::SCENARIO_DEFAULT;
 
     public function run()
     {
