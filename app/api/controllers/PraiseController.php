@@ -27,8 +27,8 @@ class PraiseController extends ActiveController
     /**
      * @var string
      */
-    public $modelClass = "common\models\content\ArticlePraise";
-
+    public $modelClass = 'common\models\content\ArticlePraise';
+    
     public function actions()
     {
         $actions = parent::actions();
