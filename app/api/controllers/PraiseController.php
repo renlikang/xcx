@@ -27,7 +27,7 @@ class PraiseController extends ActiveController
     protected function verbs()
     {
         return [
-            'index' => ['GET', 'HEAD', 'POST'],
+            'index' => ['GET', 'HEAD'],
             'view' => ['GET', 'HEAD'],
             'create' => ['POST'],
             'update' => ['PUT', 'PATCH'],
@@ -40,11 +40,11 @@ class PraiseController extends ActiveController
      */
     public $modelClass = 'common\models\content\ArticlePraise';
 
-    public function actions()
-    {
-        $actions = parent::actions();
-//        $actions['create']['class'] = 'api\actions\praise\Create';
-//        unset($actions['update']);
-        return $actions;
-    }
+//    public function actions()
+//    {
+//        $actions = parent::actions();
+////        $actions['create']['class'] = 'api\actions\praise\Create';
+////        unset($actions['update']);
+//        return $actions;
+//    }
 }
