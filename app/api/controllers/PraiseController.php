@@ -41,6 +41,7 @@ class PraiseController extends ActiveController
 //            'checkAccess' => [$this, 'checkAccess'],
 //            'scenario' => $this->createScenario,
 //        ];
+        var_dump($actions);exit;
         return $actions;
     }
 }
