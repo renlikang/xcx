@@ -61,6 +61,13 @@ return [
                         'GET comment/<articleId>' => 'index',
                     ]
                 ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => ['praise'],
+                    'pluralize' => false,
+                    'extraPatterns' => [
+                    ]
+                ],
             ],
         ],
     ],
