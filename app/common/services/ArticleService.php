@@ -9,6 +9,7 @@
 namespace common\services;
 
 use common\models\content\ArticleComment;
+use common\models\content\CommentPraiseModel;
 use common\models\content\TagMapModel;
 use common\models\content\TagModel;
 use common\models\content\ArticleModel;
@@ -256,6 +257,13 @@ class ArticleService
                 $ret[$k]['replayComment'] = ArticleComment::findOne($v->parentId);
             } else {
                 $ret[$k]['replayComment'] = null;
+            }
+
+            $commentCount = CommentPraiseModel::find()->where(['commentId' => $v->commentId])->count();
+            $ret[$k]['commentCount'] = intval($commentCount);
+            $ret[$k]['isPraise'] = 0;
+            if(Yii::$app->user->isGuest == false && CommentPraiseModel::find()->where(['uid' => Yii::$app->user->id])->exists()) {
+                $ret[$k]['isPraise'] = 1;
             }
         }
 
