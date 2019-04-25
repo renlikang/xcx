@@ -255,6 +255,13 @@ class ArticleService
             $ret[$k] = $v->toArray();
             if((int)$v->parentId > 0) {
                 $ret[$k]['replayComment'] = ArticleComment::findOne($v->parentId);
+
+                $replayCommentCount = CommentPraiseModel::find()->where(['commentId' => $v->parentId])->count();
+                $ret[$k]['replayComment']['commentCount'] = intval($replayCommentCount);
+                $ret[$k]['replayComment']['isPraise'] = 0;
+                if(Yii::$app->user->isGuest == false && CommentPraiseModel::find()->where(['commentId' => $v->parentId, 'uid' => Yii::$app->user->id])->exists()) {
+                    $ret[$k]['replayComment']['isPraise'] = 1;
+                }
             } else {
                 $ret[$k]['replayComment'] = null;
             }
@@ -262,7 +269,7 @@ class ArticleService
             $commentCount = CommentPraiseModel::find()->where(['commentId' => $v->commentId])->count();
             $ret[$k]['commentCount'] = intval($commentCount);
             $ret[$k]['isPraise'] = 0;
-            if(Yii::$app->user->isGuest == false && CommentPraiseModel::find()->where(['uid' => Yii::$app->user->id])->exists()) {
+            if(Yii::$app->user->isGuest == false && CommentPraiseModel::find()->where(['commentId' => $v->commentId, 'uid' => Yii::$app->user->id])->exists()) {
                 $ret[$k]['isPraise'] = 1;
             }
         }
