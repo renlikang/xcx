@@ -254,8 +254,7 @@ class ArticleService
         foreach ($commentModel as $k => $v) {
             $ret[$k] = $v->toArray();
             if((int)$v->parentId > 0) {
-                $ret[$k]['replayComment'] = ArticleComment::findOne($v->parentId);
-
+                $ret[$k]['replayComment'] = ArticleComment::findOne($v->parentId)->toArray();
                 $replayCommentCount = CommentPraiseModel::find()->where(['commentId' => $v->parentId])->count();
                 $ret[$k]['replayComment']['commentCount'] = intval($replayCommentCount);
                 $ret[$k]['replayComment']['isPraise'] = 0;
