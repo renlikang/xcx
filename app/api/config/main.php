@@ -63,7 +63,7 @@ return [
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['praise'],
+                    'controller' => ['praise', 'activity'],
                     'pluralize' => false,
                     'extraPatterns' => [
                     ]
