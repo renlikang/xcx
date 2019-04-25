@@ -24,17 +24,19 @@ class Create extends BaseAction
     {
         $id = Yii::$app->request->post('id');
         $type = Yii::$app->request->post('type');
+        $uid = Yii::$app->user->id;
+        $uid = 2;
         if($type == 'article') {
             if(!ArticlePraiseModel::findOne($id) && ArticleModel::findOne($id)) {
                 $model = new ArticlePraiseModel;
                 $model->articleId = $id;
-                $model->uid = Yii::$app->user->id;
+                $model->uid = $uid;
                 $model->save();
             }
         } else if($type == 'comment' && !CommentPraiseModel::findOne($id) && ArticleComment::findOne($id)) {
             $model = new CommentPraiseModel;
             $model->commentId = $id;
-            $model->uid = Yii::$app->user->id;
+            $model->uid = $uid;
             $model->save();
         }
 
