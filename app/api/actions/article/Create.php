@@ -14,6 +14,7 @@ use yii\helpers\Json;
 
 class Create extends BaseAction
 {
+    public $type;
     public function run()
     {
         $authorId = Yii::$app->user->id;

@@ -61,6 +61,7 @@ class ArticleController extends Controller
 
             'create' => [
                 'class' => 'api\actions\article\Create',
+                'type' => 'create',
             ],
         ];
     }
