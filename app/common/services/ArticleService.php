@@ -163,13 +163,13 @@ class ArticleService
 
         $list = ArticleModel::find()->where(['deleteFlag' => 0]);
         $read = UserReadRecordModel::find()->where(['uid' => $uid])->andWhere(['or', ['status' => 2] , ['and', 'status = 1', 'nums = 2']])->all();
-        if($read) {
+        if($read && YII_ENV == 'prod') {
             $read = ArrayHelper::getColumn($read, 'articleId');
             $list->andWhere(['not in', 'articleId', $read]);
         }
 
         $model = UserReadLastModel::findOne($uid);
-        if($model) {
+        if($model && YII_ENV == 'prod') {
             if($model->preArticleType == $model->articleType) {
                 $tagArr = TagMapModel::find()->where(['md5TagName' => $model->articleType])->all();
                 if($tagArr) {
