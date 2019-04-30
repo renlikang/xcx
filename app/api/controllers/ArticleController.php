@@ -12,6 +12,7 @@ use yii\rest\Controller;
  *     description="",
  *     produces={"application/json"},
  *     consumes = {"application/json"},
+ *     @SWG\Parameter(in = "header",name = "Authorization",description = "用户Token",required = false, type = "string"),
  *     @SWG\Parameter(in = "query",name = "page",description = "页数",required = true, type = "integer"),
  *     @SWG\Parameter(in = "query",name = "size",description = "每页个数",required = true, type = "integer"),
  *     @SWG\Response(response = 200,description = " success"),
@@ -24,6 +25,7 @@ use yii\rest\Controller;
  *     description="",
  *     produces={"application/json"},
  *     consumes = {"application/json"},
+ *     @SWG\Parameter(in = "header",name = "Authorization",description = "用户Token",required = false, type = "string"),
  *     @SWG\Parameter(in = "query",name = "articleId",description = "文章编号",required = true, type = "integer"),
  *     @SWG\Response(response = 200,description = " success"),
  * )
@@ -35,6 +37,7 @@ use yii\rest\Controller;
  *     description="",
  *     produces={"application/json"},
  *     consumes = {"application/json"},
+ *     @SWG\Parameter(in = "header",name = "Authorization",description = "用户Token",required = false, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "tagName[]",description = "文章标签",required = false, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "title",description = "文章标题",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "subTitle",description = "副标题",required = true, type = "string"),

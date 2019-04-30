@@ -16,6 +16,7 @@ use yii\rest\ActiveController;
  *     description="",
  *     produces={"application/json"},
  *     consumes = {"application/json"},
+ *     @SWG\Parameter(in = "header",name = "Authorization",description = "用户Token",required = false, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "id",description = "文章/评论 id",required = true, type = "integer"),
  *     @SWG\Parameter(in = "formData",name = "type",description = "文章为 article 评论为 comment",required = true, type = "string"),
  *     @SWG\Response(response = 200,description = " success"),
