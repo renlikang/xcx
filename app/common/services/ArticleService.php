@@ -15,6 +15,7 @@ use common\models\content\TagModel;
 use common\models\content\ArticleModel;
 use common\models\content\UserReadLastModel;
 use common\models\content\UserReadRecordModel;
+use common\models\UserModel;
 use common\services\RetCode;
 use Yii;
 use yii\data\Pagination;
@@ -253,10 +254,12 @@ class ArticleService
         $commentModel = $model->offset($offset)->limit($pages->pageSize)->all();
         foreach ($commentModel as $k => $v) {
             $ret[$k] = $v->toArray();
+            $ret[$k]['user'] = UserModel::findOne($v->uid);
             if((int)$v->parentId > 0) {
                 $ret[$k]['replayComment'] = ArticleComment::findOne($v->parentId)->toArray();
+                $ret[$k]['replayComment']['user'] = UserModel::findOne($ret[$k]['replayComment']['uid']);
                 $replayCommentCount = CommentPraiseModel::find()->where(['commentId' => $v->parentId])->count();
-                $ret[$k]['replayComment']['commentCount'] = intval($replayCommentCount);
+                $ret[$k]['replayComment']['praiseCount'] = intval($replayCommentCount);
                 $ret[$k]['replayComment']['isPraise'] = 0;
                 if(Yii::$app->user->isGuest == false && CommentPraiseModel::find()->where(['commentId' => $v->parentId, 'uid' => Yii::$app->user->id])->exists()) {
                     $ret[$k]['replayComment']['isPraise'] = 1;
@@ -265,8 +268,8 @@ class ArticleService
                 $ret[$k]['replayComment'] = null;
             }
 
-            $commentCount = CommentPraiseModel::find()->where(['commentId' => $v->commentId])->count();
-            $ret[$k]['commentCount'] = intval($commentCount);
+            $praiseCount = CommentPraiseModel::find()->where(['commentId' => $v->commentId])->count();
+            $ret[$k]['praiseCount'] = intval($praiseCount);
             $ret[$k]['isPraise'] = 0;
             if(Yii::$app->user->isGuest == false && CommentPraiseModel::find()->where(['commentId' => $v->commentId, 'uid' => Yii::$app->user->id])->exists()) {
                 $ret[$k]['isPraise'] = 1;
