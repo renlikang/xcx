@@ -290,6 +290,11 @@ class ArticleService
     public function detail($articleId)
     {
         $model = ArticleModel::findOne($articleId)->toArray();
+        $model['author'] = null;
+        if($model['authorId']) {
+            $model['author'] = UserModel::findOne($model['authorId']);
+        }
+
         $md5Tag = TagMapModel::find()->where(['mapId' => $articleId])->all();
         $model['tag'] = null;
         if($md5Tag) {
