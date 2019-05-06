@@ -53,7 +53,7 @@ return [
             'class' => 'common\components\Wx',
             'host' =>'https://api.weixin.qq.com',
             'appId' => 'wx2f06e42b7389715b',
-            'secret' => '6ac5770f423c92cde54b0afdfaccf5ad',
+            'secret' => '73dca7f64e79785c3081ae4b4d520241',
             'grant_type' => 'authorization_code',
             'templateId' => '',
         ],
