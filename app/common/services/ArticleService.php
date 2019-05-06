@@ -228,6 +228,7 @@ class ArticleService
 
         $last->save();
         $model = $model->toArray();
+        $model['user'] = UserModel::findOne($model['authorId']);
         $md5Tag = TagMapModel::find()->where(['mapId' => $model['articleId']])->all();
         $model['tag'] = null;
         if($md5Tag) {

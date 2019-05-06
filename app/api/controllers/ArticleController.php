@@ -38,14 +38,10 @@ use yii\rest\Controller;
  *     produces={"application/json"},
  *     consumes = {"application/json"},
  *     @SWG\Parameter(in = "header",name = "Authorization",description = "用户Token",required = false, type = "string"),
- *     @SWG\Parameter(in = "formData",name = "tagName[]",description = "文章标签",required = false, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "title",description = "文章标题",required = true, type = "string"),
- *     @SWG\Parameter(in = "formData",name = "subTitle",description = "副标题",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "summary",description = "摘要",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "headImg",description = "封面图片地址",required = true, type = "string"),
- *     @SWG\Parameter(in = "formData",name = "endImg",description = "尾图地址",required = true, type = "string"),
  *     @SWG\Parameter(in = "formData",name = "content",description = "文章内容",required = true, type = "string"),
- *     @SWG\Parameter(in = "formData",name = "orderId",description = "权重",required = true, type = "integer"),
  *     @SWG\Response(response = 200,description = " success"),
  * )
  */
