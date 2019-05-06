@@ -109,7 +109,6 @@ class Login extends BaseAction
     {
         $appid = Yii::$app->params['appid'];
         $appsecret = Yii::$app->params['appsecret'];
-        var_dump($appid, $appsecret);exit;
         $client = new \GuzzleHttp\Client();
         $res = $client->request("GET", "https://api.weixin.qq.com/sns/jscode2session?appid={$appid}&secret={$appsecret}&js_code={$code}&grant_type=authorization_code");
         $content = Json::decode($res->getBody()->getContents(), true);
