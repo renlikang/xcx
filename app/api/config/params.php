@@ -14,7 +14,6 @@ return [
             'index' => ['*'],
             'comment' => ['index'],
             'activity' => ['*'],
-            'article' =>['*']
         ],
     ],
 ];
