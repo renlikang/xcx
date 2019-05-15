@@ -163,7 +163,7 @@ class ArticleService
         }
 
         $list = ArticleModel::find()->where(['deleteFlag' => 0]);
-        $read = UserReadRecordModel::find()->where(['uid' => $uid])->andWhere(['or', ['status' => 2] , ['and', 'status = 1', 'nums = 2']])->all();
+        $readModel = $read = UserReadRecordModel::find()->where(['uid' => $uid])->andWhere(['or', ['status' => 2] , ['and', 'status = 1', 'nums = 2']])->all();
         if($read && YII_ENV == 'prod') {
             $read = ArrayHelper::getColumn($read, 'articleId');
             $list->andWhere(['not in', 'articleId', $read]);
@@ -184,7 +184,7 @@ class ArticleService
         $clone = clone $list;
         $count = $clone->count();
         $data = $list->all();
-        if(!$data && $read) {
+        if(!$data && $readModel) {
             UserReadRecordModel::deleteAll(['uid' => $uid]);
             return $this->articleShow($uid);
         }
