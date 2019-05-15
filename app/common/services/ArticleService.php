@@ -184,6 +184,11 @@ class ArticleService
         $clone = clone $list;
         $count = $clone->count();
         $data = $list->all();
+        if(!$data && $read) {
+            UserReadRecordModel::deleteAll(['uid' => $uid]);
+            return $this->articleShow($uid);
+        }
+
         if(!$data)  {
             return null;
         }
