@@ -8,6 +8,7 @@ namespace api\actions\article;
 use api\actions\BaseAction;
 use common\models\content\ArticleModel;
 use common\services\ArticleService;
+use common\services\BadWordService;
 use common\services\RetCode;
 use Yii;
 use yii\helpers\Json;
@@ -30,7 +31,10 @@ class Create extends BaseAction
         if($content) {
             $content = Json::decode($content, true);
         }
-
+        BadWordService::validate($title);
+        BadWordService::validate($subTitle);
+        BadWordService::validate($summary);
+        BadWordService::validate($content);
         if($this->type == 'update') {
             $articleId = Yii::$app->request->post('articleId');
             $ret = (new ArticleService)->update($articleId, $authorId, $tagName, $source, $title, $subTitle, $summary, $headImg, $endImg, $content, $orderId);

@@ -8,6 +8,7 @@ namespace api\actions\comment;
 use api\actions\BaseAction;
 use common\models\content\ArticleComment;
 use common\models\content\ArticleModel;
+use common\services\BadWordService;
 use common\services\RetCode;
 use Yii;
 use yii\web\HttpException;
@@ -36,6 +37,7 @@ class Create extends BaseAction
 
         $uid = Yii::$app->user->id;
         $content = Yii::$app->request->post('content');
+        BadWordService::validate($content);
         $model = new ArticleComment;
         $model->articleId = $articleId;
         $model->parentId = $parentId;
