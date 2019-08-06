@@ -21,14 +21,17 @@ class BadWordService
     {
         $w = self::getWorld();
         foreach ($w as $k => $v) {
-            try {
+            if(is_array($world)) {
+                foreach ($world as $kk => $vv) {
+                    if(strstr($vv, $v)) {
+                        throw new Exception("您输入的有敏感词，请重新输入");
+                    }
+                }
+            } else {
                 if(strstr($world, $v)) {
                     throw new Exception("您输入的有敏感词，请重新输入");
                 }
-            } catch (\Exception $e) {
-                var_dump($world, $v);exit;
             }
-
         }
     }
 }
