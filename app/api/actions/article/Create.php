@@ -47,7 +47,9 @@ class Create extends BaseAction
         if($content) {
             if(is_array($content)) {
                 foreach ($content as $k => $v) {
-                    BadWordService::validate($v);
+                    if($v) {
+                        BadWordService::validate($v);
+                    }
                 }
             } else {
                 BadWordService::validate($content);
