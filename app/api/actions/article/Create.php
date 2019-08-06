@@ -31,10 +31,23 @@ class Create extends BaseAction
         if($content) {
             $content = Json::decode($content, true);
         }
-        BadWordService::validate($title);
-        BadWordService::validate($subTitle);
-        BadWordService::validate($summary);
-        BadWordService::validate($content);
+
+        if($title) {
+            BadWordService::validate($title);
+        }
+
+        if($subTitle) {
+            BadWordService::validate($subTitle);
+        }
+
+        if($summary) {
+            BadWordService::validate($summary);
+        }
+
+        if($content) {
+            BadWordService::validate($content);
+        }
+
         if($this->type == 'update') {
             $articleId = Yii::$app->request->post('articleId');
             $ret = (new ArticleService)->update($articleId, $authorId, $tagName, $source, $title, $subTitle, $summary, $headImg, $endImg, $content, $orderId);

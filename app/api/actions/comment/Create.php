@@ -37,7 +37,10 @@ class Create extends BaseAction
 
         $uid = Yii::$app->user->id;
         $content = Yii::$app->request->post('content');
-        BadWordService::validate($content);
+        if($content) {
+            BadWordService::validate($content);
+        }
+
         $model = new ArticleComment;
         $model->articleId = $articleId;
         $model->parentId = $parentId;
