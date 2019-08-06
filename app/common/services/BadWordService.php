@@ -7,6 +7,7 @@ namespace common\services;
 
 
 use yii\base\Exception;
+use yii\web\HttpException;
 
 class BadWordService
 {
@@ -24,12 +25,12 @@ class BadWordService
             if(is_array($world)) {
                 foreach ($world as $kk => $vv) {
                     if(strstr($vv, $v)) {
-                        throw new Exception("您输入的有敏感词，请重新输入");
+                        throw new HttpException(451 ,"Unavailable For Legal Reasons");
                     }
                 }
             } else {
                 if(strstr($world, $v)) {
-                    throw new Exception("您输入的有敏感词，请重新输入");
+                    throw new HttpException(451 ,"Unavailable For Legal Reasons");
                 }
             }
         }
